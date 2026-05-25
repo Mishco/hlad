@@ -1,4 +1,4 @@
-# Hlad - Denné menu v Poprade
+# Hlad - Denné menu
 
 Web app showing daily lunch menus from restaurants.
 
