@@ -62,6 +62,8 @@ public class LunchMenuService
                         await _scraper.ScrapeMamut(restaurantId, u),
                     var u when u.Contains("phoking.sk") =>
                         await _scraper.ScrapePhokKing(restaurantId, u),
+                    var u when u.Contains("wolt.com") =>
+                        null, // Wolt is JS-rendered, use static data
                     _ => null
                 };
             }
@@ -213,6 +215,16 @@ public class LunchMenuService
                 PhoneNumber = "+421 949 698 790",
                 Rating = 4.6,
                 Tags = new() { "Vietnamská", "Ázijská", "Pho", "Bistro" }
+            },
+            new Restaurant
+            {
+                Id = 8,
+                Name = "SAVOURY Asian Restaurant & Sushi Bar",
+                Address = "Námestie svätého Egídia 44/85, 058 01 Poprad",
+                WebsiteUrl = "https://wolt.com/sk/svk/poprad/restaurant/savoury-asian-restaurant-sushi-bar",
+                PhoneNumber = "+421 949 487 358",
+                Rating = 4.5,
+                Tags = new() { "Ázijská", "Sushi", "Japonská", "Thajská" }
             }
         };
     }
@@ -715,6 +727,109 @@ public class LunchMenuService
                     new MenuItem { Name = "Curi Ga (kuracie kari)", Price = 8.50m, Description = "kokosové mlieko, zelenina, ryža" },
                     new MenuItem { Name = "Udon s krevetami", Price = 9.90m, Description = "udon rezance, krevety, zelenina, teriyaki" },
                     new MenuItem { Name = "Jarné rolky (2ks)", Price = 3.90m, Description = "s bravčovým mäsom" }
+                },
+                LastUpdated = DateTime.Now
+            });
+        }
+
+        // SAVOURY Asian Restaurant & Sushi Bar - daily lunch menu
+        if (dayOfWeek == DayOfWeek.Monday)
+        {
+            menus.Add(new DailyMenu
+            {
+                RestaurantId = 8,
+                Date = today,
+                SoupOfTheDay = "Tom Yum (330ml) (2,4) - 6,00 €",
+                Items = new()
+                {
+                    new MenuItem { Name = "Ryžové rezance s kuracím mäsom", Price = 11.50m },
+                    new MenuItem { Name = "Ryžové rezance s hovädzím mäsom", Price = 11.50m },
+                    new MenuItem { Name = "Ryžové rezance s krevetami", Price = 11.50m },
+                    new MenuItem { Name = "Kuracie prsia tempura s rezancami a sweet chilli", Price = 12.00m },
+                    new MenuItem { Name = "Bun Bó Nam Bo", Price = 12.00m },
+                    new MenuItem { Name = "Kuracie soté sweet chilli, jasmínová ryža", Price = 12.00m },
+                    new MenuItem { Name = "Sushi: Alaska roll (8ks), Maki Oshinko (4ks), Maki Tamago (4ks)", Price = 13.50m },
+                    new MenuItem { Name = "Sushi: Vegeta roll (8ks), Maki avokádo (4ks), Maki Kappa+Oshinko (4ks)", Price = 12.00m, IsVegetarian = true }
+                },
+                LastUpdated = DateTime.Now
+            });
+        }
+        else if (dayOfWeek == DayOfWeek.Tuesday)
+        {
+            menus.Add(new DailyMenu
+            {
+                RestaurantId = 8,
+                Date = today,
+                SoupOfTheDay = "Tom kha gai (330ml) (6,7) - 6,00 €",
+                Items = new()
+                {
+                    new MenuItem { Name = "Pad Thai s kuracím mäsom", Price = 12.00m, Description = "(2,3,5,6)" },
+                    new MenuItem { Name = "Pad Thai s krevetami", Price = 12.00m, Description = "(2,3,5,6)" },
+                    new MenuItem { Name = "Kungpao s kuracím mäsom a ryžou", Price = 11.50m, Description = "(5,6)" },
+                    new MenuItem { Name = "Chrumkavá kačica s arašidovou omáčkou a zeleninou", Price = 12.00m, Description = "(5,7,11)" },
+                    new MenuItem { Name = "Kuracie soté so zeleninou, jasmínová ryža", Price = 11.50m, Description = "(11)" },
+                    new MenuItem { Name = "Sushi: Sake roll (8ks), Maki sake (4ks), Maki ebi (4ks)", Price = 14.00m },
+                    new MenuItem { Name = "Sushi: Vegeta roll (8ks), Maki avokádo (4ks), Maki Kappa (4ks)", Price = 12.00m, IsVegetarian = true }
+                },
+                LastUpdated = DateTime.Now
+            });
+        }
+        else if (dayOfWeek == DayOfWeek.Wednesday)
+        {
+            menus.Add(new DailyMenu
+            {
+                RestaurantId = 8,
+                Date = today,
+                SoupOfTheDay = "Miso polievka (330ml) (6) - 6,00 €",
+                Items = new()
+                {
+                    new MenuItem { Name = "Thajské kari s kuracím mäsom a ryžou", Price = 11.50m, Description = "(7)" },
+                    new MenuItem { Name = "Thajské kari s krevetami a ryžou", Price = 12.00m, Description = "(7)" },
+                    new MenuItem { Name = "Bún chả hà nôi", Price = 12.00m, Description = "grilované bravčové, ryžové rezance, šalát" },
+                    new MenuItem { Name = "Opekaná ryža s kuracím mäsom a zeleninou", Price = 11.50m, Description = "(1,3)" },
+                    new MenuItem { Name = "Udon s hovädzím mäsom a zeleninou", Price = 12.00m, Description = "(1,3)" },
+                    new MenuItem { Name = "Sushi: Maguro roll (8ks), Maki sake (4ks), Maki oshinko (4ks)", Price = 14.50m },
+                    new MenuItem { Name = "Sushi: Vegeta roll (8ks), Maki avokádo (4ks), Maki Kappa (4ks)", Price = 12.00m, IsVegetarian = true }
+                },
+                LastUpdated = DateTime.Now
+            });
+        }
+        else if (dayOfWeek == DayOfWeek.Thursday)
+        {
+            menus.Add(new DailyMenu
+            {
+                RestaurantId = 8,
+                Date = today,
+                SoupOfTheDay = "Ostrokyslá polievka (330ml) (3,6) - 4,50 €",
+                Items = new()
+                {
+                    new MenuItem { Name = "Sklenené rezance s kuracím mäsom a zeleninou", Price = 12.50m },
+                    new MenuItem { Name = "Sklenené rezance s krevetami a zeleninou", Price = 12.50m },
+                    new MenuItem { Name = "Chrumkavé kuracie s arašidovou omáčkou a zeleninou", Price = 11.00m, Description = "(5,7,11)" },
+                    new MenuItem { Name = "Bún nem (jarné rolky s rezancami a šalátom)", Price = 12.00m },
+                    new MenuItem { Name = "Opekaná ryža s ananásom a kešu orieškami", Price = 12.50m, Description = "(1,3,8)" },
+                    new MenuItem { Name = "Sushi: Saro roll (8ks), Maki sake (4ks), Maki ebi (4ks)", Price = 14.00m },
+                    new MenuItem { Name = "Sushi: Vegeta roll (8ks), Maki avokádo (4ks), Maki oshinko (4ks)", Price = 12.00m, IsVegetarian = true }
+                },
+                LastUpdated = DateTime.Now
+            });
+        }
+        else if (dayOfWeek == DayOfWeek.Friday)
+        {
+            menus.Add(new DailyMenu
+            {
+                RestaurantId = 8,
+                Date = today,
+                SoupOfTheDay = "Hanoi vývar (330ml) - 6,00 €",
+                Items = new()
+                {
+                    new MenuItem { Name = "Čínske rezance s hovädzím mäsom a zeleninou", Price = 11.50m },
+                    new MenuItem { Name = "Čínske rezance s krevetami a zeleninou", Price = 11.50m },
+                    new MenuItem { Name = "Bun Bó Nam Bo", Price = 13.50m, Description = "hovädzie, citrónová tráva, cesnak, rezance, šalát" },
+                    new MenuItem { Name = "Kuracie prsia tempura s rezancami a sweet chilli", Price = 12.00m },
+                    new MenuItem { Name = "Opekaná ryža s kuracím mäsom a zeleninou", Price = 11.50m, Description = "(1,3)" },
+                    new MenuItem { Name = "Sushi: Alaska roll (8ks), Maki maguro (4ks), Maki sake (4ks)", Price = 14.50m },
+                    new MenuItem { Name = "Sushi: Vegeta roll (8ks), Maki avokádo (4ks), Maki Kappa (4ks)", Price = 12.00m, IsVegetarian = true }
                 },
                 LastUpdated = DateTime.Now
             });
