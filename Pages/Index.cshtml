@@ -27,6 +27,43 @@
     }
 </form>
 
+<!-- Statistics toggle -->
+<div class="stats-toggle">
+    <button type="button" class="stats-btn" onclick="toggleStats()">Moje štatistiky</button>
+</div>
+
+<!-- Statistics panel -->
+<div id="stats-panel" class="stats-panel" style="display:none;">
+    <div class="stats-header">
+        <h3>Moje obedové štatistiky</h3>
+        <button type="button" class="stats-close" onclick="toggleStats()">&times;</button>
+    </div>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number" id="stat-total">0</div>
+            <div class="stat-label">Celkom obedov</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="stat-month">0</div>
+            <div class="stat-label">Tento mesiac</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="stat-avg">0 &euro;</div>
+            <div class="stat-label">Priemerná cena</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="stat-total-spent">0 &euro;</div>
+            <div class="stat-label">Celkom utratené</div>
+        </div>
+    </div>
+    <div id="stat-favorites" class="stat-section"></div>
+    <div id="stat-restaurants" class="stat-section"></div>
+    <div id="stat-history" class="stat-section"></div>
+    <div class="stats-actions">
+        <button type="button" class="stats-clear" onclick="clearStats()">Vymazať históriu</button>
+    </div>
+</div>
+
 @foreach (var (restaurant, menu) in Model.TodaysMenus)
 {
     <div class="restaurant-card">
@@ -66,6 +103,7 @@
                         <th>Jedlo</th>
                         <th>Popis</th>
                         <th>Cena</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,6 +123,12 @@
                             </td>
                             <td>@(item.Description ?? "—")</td>
                             <td class="price">@item.Price.ToString("F2") &#8364;</td>
+                            <td>
+                                <button type="button" class="damsi-btn"
+                                    onclick="damSi(this, '@System.Text.Encodings.Web.JavaScriptEncoder.Default.Encode(restaurant.Name)', '@System.Text.Encodings.Web.JavaScriptEncoder.Default.Encode(item.Name)', @item.Price.ToString("F2", System.Globalization.CultureInfo.InvariantCulture))">
+                                    Dám si!
+                                </button>
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -113,3 +157,139 @@
     <p>Posledna aktualizacia: @DateTime.Now.ToString("HH:mm, dd.MM.yyyy")</p>
     <p>DNS by <a href="https://freedns.afraid.org/" target="_blank">Free DNS</a></p>
 </footer>
+
+<script>
+const STORAGE_KEY = 'hlad_picks';
+
+function getPicks() {
+    try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    } catch { return []; }
+}
+
+function savePicks(picks) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(picks));
+}
+
+function damSi(btn, restaurant, item, price) {
+    const pick = {
+        date: new Date().toISOString().split('T')[0],
+        time: new Date().toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' }),
+        restaurant: restaurant,
+        item: item,
+        price: price
+    };
+    const picks = getPicks();
+    picks.push(pick);
+    savePicks(picks);
+
+    // Button animation
+    btn.textContent = 'Zapisane!';
+    btn.classList.add('damsi-done');
+    setTimeout(() => {
+        btn.textContent = 'Dam si!';
+        btn.classList.remove('damsi-done');
+    }, 2000);
+
+    // Update stats if panel is open
+    if (document.getElementById('stats-panel').style.display !== 'none') {
+        renderStats();
+    }
+}
+
+function toggleStats() {
+    const panel = document.getElementById('stats-panel');
+    if (panel.style.display === 'none') {
+        panel.style.display = 'block';
+        renderStats();
+    } else {
+        panel.style.display = 'none';
+    }
+}
+
+function renderStats() {
+    const picks = getPicks();
+    const now = new Date();
+    const thisMonth = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+
+    // Basic stats
+    const monthPicks = picks.filter(p => p.date.startsWith(thisMonth));
+    const totalSpent = picks.reduce((s, p) => s + p.price, 0);
+    const avgPrice = picks.length > 0 ? totalSpent / picks.length : 0;
+
+    document.getElementById('stat-total').textContent = picks.length;
+    document.getElementById('stat-month').textContent = monthPicks.length;
+    document.getElementById('stat-avg').innerHTML = avgPrice.toFixed(2) + ' &euro;';
+    document.getElementById('stat-total-spent').innerHTML = totalSpent.toFixed(2) + ' &euro;';
+
+    // Top items
+    const itemCounts = {};
+    picks.forEach(p => {
+        const key = p.item;
+        itemCounts[key] = (itemCounts[key] || 0) + 1;
+    });
+    const topItems = Object.entries(itemCounts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
+
+    let favHtml = '<h4>Top 5 jedal</h4>';
+    if (topItems.length === 0) {
+        favHtml += '<p class="stat-empty">Zatial ziadne zaznamy</p>';
+    } else {
+        favHtml += '<ol class="stat-list">';
+        topItems.forEach(([name, count]) => {
+            favHtml += '<li><span class="stat-item-name">' + escHtml(name) + '</span> <span class="stat-item-count">' + count + 'x</span></li>';
+        });
+        favHtml += '</ol>';
+    }
+    document.getElementById('stat-favorites').innerHTML = favHtml;
+
+    // Top restaurants
+    const restCounts = {};
+    picks.forEach(p => {
+        restCounts[p.restaurant] = (restCounts[p.restaurant] || 0) + 1;
+    });
+    const topRest = Object.entries(restCounts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
+
+    let restHtml = '<h4>Top restauracie</h4>';
+    if (topRest.length === 0) {
+        restHtml += '<p class="stat-empty">Zatial ziadne zaznamy</p>';
+    } else {
+        restHtml += '<ol class="stat-list">';
+        topRest.forEach(([name, count]) => {
+            restHtml += '<li><span class="stat-item-name">' + escHtml(name) + '</span> <span class="stat-item-count">' + count + 'x</span></li>';
+        });
+        restHtml += '</ol>';
+    }
+    document.getElementById('stat-restaurants').innerHTML = restHtml;
+
+    // Recent history (last 10)
+    const recent = picks.slice(-10).reverse();
+    let histHtml = '<h4>Posledne obedy</h4>';
+    if (recent.length === 0) {
+        histHtml += '<p class="stat-empty">Zatial ziadne zaznamy</p>';
+    } else {
+        histHtml += '<table class="stat-history-table"><thead><tr><th>Datum</th><th>Restauracia</th><th>Jedlo</th><th>Cena</th></tr></thead><tbody>';
+        recent.forEach(p => {
+            histHtml += '<tr><td>' + escHtml(p.date) + '</td><td>' + escHtml(p.restaurant) + '</td><td>' + escHtml(p.item) + '</td><td>' + p.price.toFixed(2) + ' &euro;</td></tr>';
+        });
+        histHtml += '</tbody></table>';
+    }
+    document.getElementById('stat-history').innerHTML = histHtml;
+}
+
+function clearStats() {
+    if (confirm('Naozaj chcete vymazat vsetku historiu obedov?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        renderStats();
+    }
+}
+
+function escHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+}
+</script>
