@@ -151,7 +151,7 @@ public class LunchMenuService
                 Address = "Poprad",
                 WebsiteUrl = "https://restauracie.sme.sk/restauracia/popradska-plzenka_12459-poprad_2660/denne-menu",
                 PhoneNumber = null,
-                Rating = 3.6,
+                Rating = 4.9,
                 Tags = new() { "Slovenská", "Tradičná", "Obedy" }
             },
             new Restaurant
@@ -171,7 +171,7 @@ public class LunchMenuService
                 Address = "Námestie sv. Egídia 3290/124, Poprad",
                 WebsiteUrl = "https://forumpoprad.sk/ponuka/obedove-menu/",
                 PhoneNumber = "+421 948 007 051",
-                Rating = 4.2,
+                Rating = 4.8,
                 Tags = new() { "Steaky", "Burgre", "Pub" }
             },
             new Restaurant
@@ -181,7 +181,7 @@ public class LunchMenuService
                 Address = "Francisciho 19, 058 01 Poprad",
                 WebsiteUrl = "https://menucka.sk/denne-menu/poprad/barn-club",
                 PhoneNumber = "052/772 12 00",
-                Rating = 4.0,
+                Rating = 4.7,
                 Tags = new() { "Slovenská", "Pub", "Obedy" }
             },
             new Restaurant
