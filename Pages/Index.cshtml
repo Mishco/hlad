@@ -1,0 +1,113 @@
+@page
+@model LunchMenu.Pages.IndexModel
+@{
+    ViewData["Title"] = "Denné menu - Poprad";
+}
+
+<div class="header">
+    <h1>Denné menu v Poprade</h1>
+    <div class="day-nav">
+        <a href="?DayOffset=@(Model.DayOffset - 1)&Search=@Model.Search" class="nav-btn">&larr; Predchádzajúci deň</a>
+        <span class="date">@Model.SelectedDate.ToString("dddd, d. MMMM yyyy", new System.Globalization.CultureInfo("sk-SK"))</span>
+        <a href="?DayOffset=@(Model.DayOffset + 1)&Search=@Model.Search" class="nav-btn">Ďalší deň &rarr;</a>
+    </div>
+    @if (Model.DayOffset != 0)
+    {
+        <a href="/" class="today-btn">Dnes</a>
+    }
+</div>
+
+<form method="get" class="filters">
+    <input type="hidden" name="DayOffset" value="@Model.DayOffset" />
+    <input type="text" name="Search" value="@Model.Search" placeholder="Hľadať jedlo (napr. rezeň, pizza)..." class="search-input" />
+    <button type="submit" class="search-btn">Hľadať</button>
+    @if (!string.IsNullOrEmpty(Model.Search))
+    {
+        <a href="/?DayOffset=@Model.DayOffset" class="clear-btn">Zrušiť filter</a>
+    }
+</form>
+
+@foreach (var (restaurant, menu) in Model.TodaysMenus)
+{
+    <div class="restaurant-card">
+        <div class="restaurant-header">
+            <div class="header-top">
+                <h2>
+                    @restaurant.Name
+                    @if (restaurant.WebsiteUrl is not null)
+                    {
+                        <a href="@restaurant.WebsiteUrl" target="_blank" class="website-link" title="Zobraziť zdroj">&#x1F517;</a>
+                    }
+                </h2>
+            </div>
+            @if (restaurant.Tags.Count > 0)
+            {
+                <div class="tags">
+                    @foreach (var tag in restaurant.Tags)
+                    {
+                        <span class="tag">@tag</span>
+                    }
+                </div>
+            }
+        </div>
+
+        @if (menu is not null)
+        {
+            @if (menu.SoupOfTheDay is not null)
+            {
+                <div class="soup">
+                    <strong>Polievka:</strong> @menu.SoupOfTheDay
+                </div>
+            }
+
+            <table class="menu-table">
+                <thead>
+                    <tr>
+                        <th>Jedlo</th>
+                        <th>Popis</th>
+                        <th>Cena</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in menu.Items)
+                    {
+                        <tr class="@(item.IsVegetarian ? "vegetarian" : "")">
+                            <td>
+                                @item.Name
+                                @if (item.IsVegetarian)
+                                {
+                                    <span class="veg-badge" title="Vegetarianske">&#x1F331;</span>
+                                }
+                                @if (item.Allergens.Count > 0)
+                                {
+                                    <span class="allergens" title="Alergeny">(@string.Join(", ", item.Allergens))</span>
+                                }
+                            </td>
+                            <td>@(item.Description ?? "—")</td>
+                            <td class="price">@item.Price.ToString("F2") &#8364;</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="menu-footer">
+                <span class="last-updated">Aktualizovane: @menu.LastUpdated.ToString("HH:mm")</span>
+            </div>
+        }
+        else
+        {
+            <p class="no-menu">Menu na dnes nie je k dispozicii.</p>
+        }
+    </div>
+}
+
+<footer class="page-footer">
+    <p>Data su ziskavane z <a href="https://restauracie.sme.sk" target="_blank">restauracie.sme.sk</a>,
+       <a href="https://forumpoprad.sk" target="_blank">forumpoprad.sk</a>,
+       <a href="https://menucka.sk" target="_blank">menucka.sk</a>,
+       <a href="https://aquacity.sk" target="_blank">aquacity.sk</a>,
+       <a href="https://www.angrychef.sk" target="_blank">angrychef.sk</a>,
+       <a href="https://mamutpoprad.sk" target="_blank">mamutpoprad.sk</a> a
+       <a href="https://www.phoking.sk" target="_blank">phoking.sk</a>.</p>
+    <p>Posledna aktualizacia: @DateTime.Now.ToString("HH:mm, dd.MM.yyyy")</p>
+</footer>

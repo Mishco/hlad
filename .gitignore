@@ -1,0 +1,37 @@
+# .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.cache
+*.DotSettings.user
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+publish/
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ASP.NET
+appsettings.Development.json
+
+# Logs
+*.log

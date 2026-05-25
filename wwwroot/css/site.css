@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 16px;
+    border-bottom: 2px solid #eee;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.date {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Day navigation */
+.day-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.nav-btn {
+    color: #555;
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.nav-btn:hover {
+    background: #f5f5f5;
+}
+
+.today-btn {
+    display: inline-block;
+    margin-top: 6px;
+    color: #888;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.today-btn:hover {
+    color: #333;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #999;
+}
+
+.search-btn {
+    padding: 8px 16px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.search-btn:hover {
+    background: #555;
+}
+
+.clear-btn {
+    color: #c00;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.clear-btn:hover {
+    text-decoration: underline;
+}
+
+/* Restaurant cards */
+.restaurant-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.restaurant-header {
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.restaurant-header h2 {
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.website-link {
+    text-decoration: none;
+    font-size: 0.75rem;
+    opacity: 0.5;
+}
+
+.website-link:hover {
+    opacity: 1;
+}
+
+/* Rating */
+.rating {
+    white-space: nowrap;
+    font-size: 0.9rem;
+}
+
+.star { color: #ddd; }
+.star-full { color: #e8b730; }
+.star-half { color: #e8b730; opacity: 0.5; }
+.star-empty { color: #ddd; }
+
+.rating-number {
+    font-size: 0.8rem;
+    color: #888;
+    margin-left: 2px;
+}
+
+/* Tags */
+.tags {
+    margin-top: 6px;
+}
+
+.tag {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #666;
+    padding: 1px 7px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    margin-right: 4px;
+    margin-bottom: 2px;
+}
+
+.address, .phone {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.soup {
+    background: #fafafa;
+    border-left: 3px solid #e8b730;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menu-table th {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 500;
+}
+
+.menu-table td {
+    padding: 8px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9rem;
+}
+
+.menu-table tr:last-child td {
+    border-bottom: none;
+}
+
+.menu-table tr.vegetarian {
+    background: #f8fdf5;
+}
+
+.price {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.veg-badge {
+    margin-left: 4px;
+    font-size: 0.85rem;
+}
+
+.allergens {
+    font-size: 0.7rem;
+    color: #aaa;
+    margin-left: 4px;
+}
+
+.no-menu {
+    color: #bbb;
+    font-style: italic;
+    padding: 12px 0;
+}
+
+.menu-footer {
+    margin-top: 8px;
+    text-align: right;
+}
+
+.last-updated {
+    font-size: 0.7rem;
+    color: #ccc;
+}
+
+/* Page footer */
+.page-footer {
+    text-align: center;
+    padding: 16px;
+    margin-top: 16px;
+    color: #bbb;
+    font-size: 0.75rem;
+    border-top: 1px solid #eee;
+}
+
+.page-footer a {
+    color: #888;
+    text-decoration: none;
+}
+
+.page-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 1.2rem;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .header-top {
+        flex-direction: column;
+    }
+
+    .menu-table th:nth-child(2),
+    .menu-table td:nth-child(2) {
+        display: none;
+    }
+
+    .restaurant-header h2 {
+        font-size: 1rem;
+    }
+
+    .day-nav {
+        flex-wrap: wrap;
+    }
+}
+
+/* Print styles */
+@media print {
+    .filters, .page-footer, .website-link, .day-nav, .today-btn {
+        display: none;
+    }
+
+    .restaurant-card {
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+}
