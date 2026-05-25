@@ -20,7 +20,6 @@ app.UseStaticFiles();
 app.UseRouting();
 app.MapRazorPages();
 
-// JSON API endpoint
 app.MapGet("/api/menus/today", async (LunchMenuService svc, string? search, int? dayOffset) =>
 {
     var overview = await svc.GetTodaysOverviewAsync(search, dayOffset ?? 0);

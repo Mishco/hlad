@@ -60,7 +60,7 @@ public class MenuScraperService
             bool foundSoup = false;
             while (current != null)
             {
-                if (current.Name == "h2") break; // next day
+                if (current.Name == "h2") break;
 
                 var text = HtmlEntity.DeEntitize(current.InnerText).Trim();
 
