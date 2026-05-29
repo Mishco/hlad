@@ -193,7 +193,7 @@
 const STORAGE_KEY = 'hlad_picks';
 const SUPABASE_URL = 'https://blpygjtrcmfzzxzybpbn.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJscHlnanRyY21menp4enlicGJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwNDE1NDMsImV4cCI6MjA5NTYxNzU0M30.jKX6hk3rBSI5BVMzGcgVjgKtUUHBfAz0W7Z8r9fFRNc';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 function getPicks() {
     try {
@@ -221,7 +221,7 @@ async function damSi(btn, restaurant, item, price) {
 
     // Save to Supabase
     try {
-        await supabase.from('picks').insert({
+        await sb.from('picks').insert({
             restaurant: restaurant,
             item: item,
             price: price
@@ -333,7 +333,7 @@ function renderStats() {
 async function renderGlobalStats() {
     try {
         // Fetch all picks from Supabase
-        const { data: allPicks, error } = await supabase
+        const { data: allPicks, error } = await sb
             .from('picks')
             .select('*')
             .order('picked_at', { ascending: false })
