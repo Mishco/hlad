@@ -321,6 +321,9 @@ body {
 .stats-toggle {
     text-align: center;
     margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
 .stats-btn {
@@ -340,6 +343,16 @@ body {
     background: linear-gradient(135deg, #7d3c98, #8e44ad);
     box-shadow: 0 4px 12px rgba(142, 68, 173, 0.4);
     transform: translateY(-1px);
+}
+
+.stats-btn-global {
+    background: linear-gradient(135deg, #e67e22, #f39c12);
+    box-shadow: 0 2px 8px rgba(230, 126, 34, 0.3);
+}
+
+.stats-btn-global:hover {
+    background: linear-gradient(135deg, #d35400, #e67e22);
+    box-shadow: 0 4px 12px rgba(230, 126, 34, 0.4);
 }
 
 /* Stats panel */
