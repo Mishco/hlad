@@ -2,7 +2,7 @@
 
 Web app showing daily lunch menus from restaurants.
 
-**Live:** [hlad.onrender.com](https://hlad.onrender.com)
+**Live:** [https://hlad.soon.it/](https://hlad.soon.it/)
 
 ## Restaurants
 
