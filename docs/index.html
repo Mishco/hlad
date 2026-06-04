@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hlad - Denné menu v Poprade</title>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Denné menu v Poprade</h1>
+        <div class="day-nav">
+            <button class="nav-btn" onclick="changeDay(-1)">&larr; Predchádzajúci deň</button>
+            <span class="date" id="current-date"></span>
+            <button class="nav-btn" onclick="changeDay(1)">Ďalší deň &rarr;</button>
+        </div>
+        <button class="today-btn" id="today-btn" onclick="goToday()" style="display:none">Dnes</button>
+    </div>
+
+    <div class="filters">
+        <input type="text" id="search-input" placeholder="Hľadať jedlo (napr. rezeň, pizza)..." class="search-input" oninput="renderMenus()">
+        <button class="clear-btn" id="clear-btn" onclick="clearSearch()" style="display:none">Zrušiť filter</button>
+    </div>
+
+    <!-- Statistics toggle -->
+    <div class="stats-toggle">
+        <button type="button" class="stats-btn" onclick="toggleStats()">Moje štatistiky</button>
+        <button type="button" class="stats-btn stats-btn-global" onclick="toggleGlobalStats()">Globálne štatistiky</button>
+    </div>
+
+    <!-- Personal Statistics panel -->
+    <div id="stats-panel" class="stats-panel" style="display:none;">
+        <div class="stats-header">
+            <h3>Moje obedové štatistiky</h3>
+            <button type="button" class="stats-close" onclick="toggleStats()">&times;</button>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number" id="stat-total">0</div><div class="stat-label">Celkom obedov</div></div>
+            <div class="stat-card"><div class="stat-number" id="stat-month">0</div><div class="stat-label">Tento mesiac</div></div>
+            <div class="stat-card"><div class="stat-number" id="stat-avg">0 &euro;</div><div class="stat-label">Priemerná cena</div></div>
+            <div class="stat-card"><div class="stat-number" id="stat-total-spent">0 &euro;</div><div class="stat-label">Celkom utratené</div></div>
+        </div>
+        <div id="stat-favorites" class="stat-section"></div>
+        <div id="stat-restaurants" class="stat-section"></div>
+        <div id="stat-history" class="stat-section"></div>
+        <div class="stats-actions">
+            <button type="button" class="stats-clear" onclick="clearStats()">Vymazať históriu</button>
+        </div>
+    </div>
+
+    <!-- Global Statistics panel -->
+    <div id="global-stats-panel" class="stats-panel" style="display:none;">
+        <div class="stats-header">
+            <h3>Globálne štatistiky (všetci používatelia)</h3>
+            <button type="button" class="stats-close" onclick="toggleGlobalStats()">&times;</button>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number" id="gstat-total">0</div><div class="stat-label">Celkom hlasov</div></div>
+            <div class="stat-card"><div class="stat-number" id="gstat-today">0</div><div class="stat-label">Dnes</div></div>
+            <div class="stat-card"><div class="stat-number" id="gstat-restaurants">0</div><div class="stat-label">Restaurácií</div></div>
+            <div class="stat-card"><div class="stat-number" id="gstat-avg">0 &euro;</div><div class="stat-label">Priemerná cena</div></div>
+        </div>
+        <div id="gstat-top-items" class="stat-section"></div>
+        <div id="gstat-top-restaurants" class="stat-section"></div>
+        <div id="gstat-recent" class="stat-section"></div>
+    </div>
+
+    <div id="menus-container"></div>
+
+    <footer class="page-footer">
+        <p>Data su ziskavane z
+            <a href="https://restauracie.sme.sk" target="_blank">restauracie.sme.sk</a>,
+            <a href="https://forumpoprad.sk" target="_blank">forumpoprad.sk</a>,
+            <a href="https://menucka.sk" target="_blank">menucka.sk</a>,
+            <a href="https://aquacity.sk" target="_blank">aquacity.sk</a>,
+            <a href="https://www.angrychef.sk" target="_blank">angrychef.sk</a>,
+            <a href="https://mamutpoprad.sk" target="_blank">mamutpoprad.sk</a>,
+            <a href="https://www.phoking.sk" target="_blank">phoking.sk</a> a
+            <a href="https://wolt.com" target="_blank">wolt.com</a>.</p>
+        <p id="generated-at">Posledna aktualizacia: --</p>
+        <p>DNS by <a href="https://freedns.afraid.org/" target="_blank">Free DNS</a></p>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+// Config
+const SUPABASE_URL = 'https://blpygjtrcmfzzxzybpbn.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJscHlnanRyY21menp4enlicGJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwNDE1NDMsImV4cCI6MjA5NTYxNzU0M30.jKX6hk3rBSI5BVMzGcgVjgKtUUHBfAz0W7Z8r9fFRNc';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const STORAGE_KEY = 'hlad_picks';
+
+let menuData = null;
+let dayOffset = 0;
+
+// Slovak day/month names
+const dayNames = ['nedeľa', 'pondelok', 'utorok', 'streda', 'štvrtok', 'piatok', 'sobota'];
+const monthNames = ['januára', 'februára', 'marca', 'apríla', 'mája', 'júna', 'júla', 'augusta', 'septembra', 'októbra', 'novembra', 'decembra'];
+
+// Load menu data
+async function init() {
+    try {
+        const resp = await fetch('menus.json');
+        menuData = await resp.json();
+        document.getElementById('generated-at').textContent = 'Posledna aktualizacia: ' + menuData.generatedAt;
+        renderMenus();
+    } catch (e) {
+        document.getElementById('menus-container').innerHTML = '<p class="no-menu">Nepodarilo sa nacitat data. Skuste neskor.</p>';
+        console.error(e);
+    }
+}
+
+function getTargetDate() {
+    const d = new Date();
+    d.setDate(d.getDate() + dayOffset);
+    return d;
+}
+
+function formatDate(d) {
+    return dayNames[d.getDay()] + ', ' + d.getDate() + '. ' + monthNames[d.getMonth()] + ' ' + d.getFullYear();
+}
+
+function changeDay(offset) {
+    dayOffset += offset;
+    document.getElementById('today-btn').style.display = dayOffset === 0 ? 'none' : 'inline-block';
+    renderMenus();
+}
+
+function goToday() {
+    dayOffset = 0;
+    document.getElementById('today-btn').style.display = 'none';
+    renderMenus();
+}
+
+function clearSearch() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('clear-btn').style.display = 'none';
+    renderMenus();
+}
+
+function renderMenus() {
+    if (!menuData) return;
+
+    const target = getTargetDate();
+    const dateStr = target.toISOString().split('T')[0];
+    document.getElementById('current-date').textContent = formatDate(target);
+
+    const search = document.getElementById('search-input').value.toLowerCase().trim();
+    document.getElementById('clear-btn').style.display = search ? 'inline' : 'none';
+
+    // Get menus for this date
+    const dayMenus = menuData.menus.filter(m => m.date === dateStr);
+
+    // Build restaurant+menu pairs, sorted by rating
+    let pairs = menuData.restaurants.map(r => {
+        let menu = dayMenus.find(m => m.restaurantId === r.id);
+        // Apply search filter
+        if (menu && search) {
+            const filteredItems = menu.items.filter(i => i.name.toLowerCase().includes(search));
+            const soupMatch = menu.soupOfTheDay && menu.soupOfTheDay.toLowerCase().includes(search);
+            if (filteredItems.length === 0 && !soupMatch) {
+                menu = null;
+            } else if (filteredItems.length > 0) {
+                menu = { ...menu, items: filteredItems };
+            }
+        }
+        return { restaurant: r, menu };
+    });
+
+    // Sort: has menu first, then by rating desc
+    pairs.sort((a, b) => {
+        if (a.menu && !b.menu) return -1;
+        if (!a.menu && b.menu) return 1;
+        return b.restaurant.rating - a.restaurant.rating;
+    });
+
+    let html = '';
+    for (const { restaurant: r, menu } of pairs) {
+        html += '<div class="restaurant-card">';
+        html += '<div class="restaurant-header"><div class="header-top"><h2>' + esc(r.name);
+        if (r.websiteUrl) html += ' <a href="' + esc(r.websiteUrl) + '" target="_blank" class="website-link" title="Zobraziť zdroj">&#x1F517;</a>';
+        html += '</h2></div>';
+        if (r.tags && r.tags.length > 0) {
+            html += '<div class="tags">' + r.tags.map(t => '<span class="tag">' + esc(t) + '</span>').join('') + '</div>';
+        }
+        html += '</div>';
+
+        if (menu) {
+            if (menu.soupOfTheDay) {
+                html += '<div class="soup"><strong>Polievka:</strong> ' + esc(menu.soupOfTheDay) + '</div>';
+            }
+            html += '<table class="menu-table"><thead><tr><th>Jedlo</th><th>Popis</th><th>Cena</th><th></th></tr></thead><tbody>';
+            for (const item of menu.items) {
+                const vegClass = item.isVegetarian ? ' class="vegetarian"' : '';
+                html += '<tr' + vegClass + '>';
+                html += '<td>' + esc(item.name);
+                if (item.isVegetarian) html += ' <span class="veg-badge" title="Vegetarianske">&#x1F331;</span>';
+                html += '</td>';
+                html += '<td>' + (item.description ? esc(item.description) : '—') + '</td>';
+                html += '<td class="price">' + item.price.toFixed(2) + ' &euro;</td>';
+                html += '<td><button class="damsi-btn" onclick="damSi(this,\'' + escAttr(r.name) + '\',\'' + escAttr(item.name) + '\',' + item.price + ')">Dám si!</button></td>';
+                html += '</tr>';
+            }
+            html += '</tbody></table>';
+            html += '<div class="menu-footer"><span class="last-updated">Aktualizovane: ' + esc(menu.lastUpdated) + '</span></div>';
+        } else {
+            html += '<p class="no-menu">Menu na tento deň nie je k dispozicii.</p>';
+        }
+        html += '</div>';
+    }
+
+    document.getElementById('menus-container').innerHTML = html;
+}
+
+// "Dam si" functionality
+function getPicks() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+    catch { return []; }
+}
+
+function savePicks(picks) { localStorage.setItem(STORAGE_KEY, JSON.stringify(picks)); }
+
+async function damSi(btn, restaurant, item, price) {
+    const pick = {
+        date: new Date().toISOString().split('T')[0],
+        time: new Date().toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' }),
+        restaurant, item, price
+    };
+    const picks = getPicks();
+    picks.push(pick);
+    savePicks(picks);
+
+    try { await sb.from('picks').insert({ restaurant, item, price }); }
+    catch (e) { console.error('Supabase insert failed:', e); }
+
+    btn.textContent = 'Zapisane!';
+    btn.classList.add('damsi-done');
+    setTimeout(() => { btn.textContent = 'Dám si!'; btn.classList.remove('damsi-done'); }, 2000);
+
+    if (document.getElementById('stats-panel').style.display !== 'none') renderPersonalStats();
+    if (document.getElementById('global-stats-panel').style.display !== 'none') renderGlobalStats();
+}
+
+// Stats
+function toggleStats() {
+    const p = document.getElementById('stats-panel');
+    p.style.display = p.style.display === 'none' ? 'block' : 'none';
+    if (p.style.display === 'block') renderPersonalStats();
+}
+
+function toggleGlobalStats() {
+    const p = document.getElementById('global-stats-panel');
+    p.style.display = p.style.display === 'none' ? 'block' : 'none';
+    if (p.style.display === 'block') renderGlobalStats();
+}
+
+function renderPersonalStats() {
+    const picks = getPicks();
+    const now = new Date();
+    const thisMonth = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+    const monthPicks = picks.filter(p => p.date.startsWith(thisMonth));
+    const totalSpent = picks.reduce((s, p) => s + p.price, 0);
+    const avgPrice = picks.length > 0 ? totalSpent / picks.length : 0;
+
+    document.getElementById('stat-total').textContent = picks.length;
+    document.getElementById('stat-month').textContent = monthPicks.length;
+    document.getElementById('stat-avg').innerHTML = avgPrice.toFixed(2) + ' &euro;';
+    document.getElementById('stat-total-spent').innerHTML = totalSpent.toFixed(2) + ' &euro;';
+
+    const itemCounts = {};
+    picks.forEach(p => { itemCounts[p.item] = (itemCounts[p.item] || 0) + 1; });
+    const topItems = Object.entries(itemCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+    document.getElementById('stat-favorites').innerHTML = '<h4>Top 5 jedal</h4>' + (topItems.length === 0 ?
+        '<p class="stat-empty">Zatial ziadne zaznamy</p>' :
+        '<ol class="stat-list">' + topItems.map(([n, c]) => '<li><span class="stat-item-name">' + esc(n) + '</span> <span class="stat-item-count">' + c + 'x</span></li>').join('') + '</ol>');
+
+    const restCounts = {};
+    picks.forEach(p => { restCounts[p.restaurant] = (restCounts[p.restaurant] || 0) + 1; });
+    const topRest = Object.entries(restCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+    document.getElementById('stat-restaurants').innerHTML = '<h4>Top restauracie</h4>' + (topRest.length === 0 ?
+        '<p class="stat-empty">Zatial ziadne zaznamy</p>' :
+        '<ol class="stat-list">' + topRest.map(([n, c]) => '<li><span class="stat-item-name">' + esc(n) + '</span> <span class="stat-item-count">' + c + 'x</span></li>').join('') + '</ol>');
+
+    const recent = picks.slice(-10).reverse();
+    document.getElementById('stat-history').innerHTML = '<h4>Posledne obedy</h4>' + (recent.length === 0 ?
+        '<p class="stat-empty">Zatial ziadne zaznamy</p>' :
+        '<table class="stat-history-table"><thead><tr><th>Datum</th><th>Restauracia</th><th>Jedlo</th><th>Cena</th></tr></thead><tbody>' +
+        recent.map(p => '<tr><td>' + esc(p.date) + '</td><td>' + esc(p.restaurant) + '</td><td>' + esc(p.item) + '</td><td>' + p.price.toFixed(2) + ' &euro;</td></tr>').join('') +
+        '</tbody></table>');
+}
+
+async function renderGlobalStats() {
+    try {
+        const { data: allPicks, error } = await sb.from('picks').select('*').order('picked_at', { ascending: false }).limit(1000);
+        if (error) { console.error(error); return; }
+
+        const today = new Date().toISOString().split('T')[0];
+        const todayPicks = allPicks.filter(p => p.picked_at && p.picked_at.startsWith(today));
+        const uniqueRest = new Set(allPicks.map(p => p.restaurant));
+        const totalSpent = allPicks.reduce((s, p) => s + Number(p.price), 0);
+        const avgPrice = allPicks.length > 0 ? totalSpent / allPicks.length : 0;
+
+        document.getElementById('gstat-total').textContent = allPicks.length;
+        document.getElementById('gstat-today').textContent = todayPicks.length;
+        document.getElementById('gstat-restaurants').textContent = uniqueRest.size;
+        document.getElementById('gstat-avg').innerHTML = avgPrice.toFixed(2) + ' &euro;';
+
+        const itemCounts = {};
+        allPicks.forEach(p => { itemCounts[p.item] = (itemCounts[p.item] || 0) + 1; });
+        const topItems = Object.entries(itemCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+        document.getElementById('gstat-top-items').innerHTML = '<h4>Top 10 jedal (vsetci)</h4>' + (topItems.length === 0 ?
+            '<p class="stat-empty">Zatial ziadne zaznamy</p>' :
+            '<ol class="stat-list">' + topItems.map(([n, c]) => '<li><span class="stat-item-name">' + esc(n) + '</span> <span class="stat-item-count">' + c + 'x</span></li>').join('') + '</ol>');
+
+        const restCounts = {};
+        allPicks.forEach(p => { restCounts[p.restaurant] = (restCounts[p.restaurant] || 0) + 1; });
+        const topRest = Object.entries(restCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
+        document.getElementById('gstat-top-restaurants').innerHTML = '<h4>Top restauracie</h4>' + (topRest.length === 0 ?
+            '<p class="stat-empty">Zatial ziadne zaznamy</p>' :
+            '<ol class="stat-list">' + topRest.map(([n, c]) => '<li><span class="stat-item-name">' + esc(n) + '</span> <span class="stat-item-count">' + c + 'x</span></li>').join('') + '</ol>');
+
+        const recent = allPicks.slice(0, 10);
+        document.getElementById('gstat-recent').innerHTML = '<h4>Posledne objednavky</h4>' + (recent.length === 0 ?
+            '<p class="stat-empty">Zatial ziadne zaznamy</p>' :
+            '<table class="stat-history-table"><thead><tr><th>Kedy</th><th>Restauracia</th><th>Jedlo</th><th>Cena</th></tr></thead><tbody>' +
+            recent.map(p => {
+                const when = p.picked_at ? new Date(p.picked_at).toLocaleString('sk-SK', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '—';
+                return '<tr><td>' + esc(when) + '</td><td>' + esc(p.restaurant) + '</td><td>' + esc(p.item) + '</td><td>' + Number(p.price).toFixed(2) + ' &euro;</td></tr>';
+            }).join('') + '</tbody></table>');
+    } catch (e) { console.error('Global stats error:', e); }
+}
+
+function clearStats() {
+    if (confirm('Naozaj chcete vymazat vsetku historiu obedov?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        renderPersonalStats();
+    }
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function escAttr(s) { return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"'); }
+
+// Init
+init();
+</script>
+</body>
+</html>
