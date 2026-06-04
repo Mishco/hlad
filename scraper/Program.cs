@@ -38,7 +38,7 @@ class Program
             {
                 menu = r.WebsiteUrl switch
                 {
-                    var u when u.Contains("restauracie.sme.sk") => await ScrapeRestauracieSmeSk(r.Id, u),
+                    var u when u.Contains("popradskaplzenka.sk") => await ScrapePlzenka(r.Id, u),
                     var u when u.Contains("forumpoprad.sk") => await ScrapeForumPoprad(r.Id, u),
                     var u when u.Contains("menucka.sk") => await ScrapeMenuckaSk(r.Id, u),
                     var u when u.Contains("angrychef.sk") => await ScrapeAngryChef(r.Id, u),
@@ -77,6 +77,13 @@ class Program
                 {
                     dayMenu = menus.FirstOrDefault(m => m.RestaurantId == r.Id);
                 }
+                else if (r.WebsiteUrl.Contains("popradskaplzenka.sk"))
+                {
+                    // Plzeňka has all week's menus on one page
+                    try { dayMenu = await ScrapePlzenka(r.Id, r.WebsiteUrl, date); }
+                    catch { dayMenu = null; }
+                    dayMenu ??= GetStaticMenu(r.Id, date);
+                }
                 else
                 {
                     dayMenu = GetStaticMenu(r.Id, date);
@@ -107,7 +114,7 @@ class Program
 
     static List<Restaurant> GetRestaurants() => new()
     {
-        new(1, "Popradská Plzeňka", "Poprad", "https://restauracie.sme.sk/restauracia/popradska-plzenka_12459-poprad_2660/denne-menu", null, 4.9, new() { "Slovenská", "Tradičná", "Obedy" }),
+        new(1, "Popradská Plzeňka", "Námestie sv. Egídia 9/19, Poprad", "https://www.popradskaplzenka.sk/obedove-menu", "+421 905 499 994", 4.9, new() { "Slovenská", "Tradičná", "Obedy" }),
         new(2, "Aquacity Poprad - High Tatras", "Športová 1397/1, 058 01 Poprad", "https://aquacity.sk/sluzby/menu/", null, 3.8, new() { "Hotel", "Chef's menu", "Medzinárodná" }),
         new(3, "Rock'n'Roll Steak Pub (Forum Poprad)", "Námestie sv. Egídia 3290/124, Poprad", "https://forumpoprad.sk/ponuka/obedove-menu/", "+421 948 007 051", 4.8, new() { "Steaky", "Burgre", "Pub" }),
         new(4, "Barn Club", "Francisciho 19, 058 01 Poprad", "https://menucka.sk/denne-menu/poprad/barn-club", "052/772 12 00", 4.7, new() { "Slovenská", "Pub", "Obedy" }),
@@ -119,60 +126,83 @@ class Program
 
     // ===== SCRAPERS =====
 
-    static async Task<DailyMenu?> ScrapeRestauracieSmeSk(int restaurantId, string url)
+    static async Task<DailyMenu?> ScrapePlzenka(int restaurantId, string url, DateTime? forDate = null)
     {
         var html = await Http.GetStringAsync(url);
         var doc = new HtmlDocument();
         doc.LoadHtml(html);
 
-        var today = DateTime.Today;
-        var todayStr = today.ToString("dd.MM.yyyy");
+        var targetDate = forDate ?? DateTime.Today;
+        var targetStr = targetDate.ToString("dd.MM.yyyy");
 
-        var headings = doc.DocumentNode.SelectNodes("//h2");
-        if (headings == null) return null;
+        // Find h5.food-section containing target date
+        var h5Nodes = doc.DocumentNode.SelectNodes("//h5[@class='food-section']");
+        if (h5Nodes == null) return null;
 
-        HtmlNode? todaySection = null;
-        foreach (var h2 in headings)
+        HtmlNode? todayHeader = null;
+        foreach (var h5 in h5Nodes)
         {
-            if (h2.InnerText.Contains(todayStr))
-            { todaySection = h2; break; }
+            if (h5.InnerText.Contains(targetStr))
+            { todayHeader = h5; break; }
         }
-        if (todaySection == null) return null;
+        if (todayHeader == null) return null;
 
+        // Collect all sibling elements until next day header (h5 containing a date pattern)
         var items = new List<MenuItem>();
         string? soup = null;
-        var current = todaySection.NextSibling;
-        bool foundSoup = false;
+        var current = todayHeader.NextSibling;
+        var datePattern = new Regex(@"\d{2}\.\d{2}\.\d{4}");
 
         while (current != null)
         {
-            if (current.Name == "h2") break;
-            var text = HtmlEntity.DeEntitize(current.InnerText).Trim();
-            if (string.IsNullOrWhiteSpace(text)) { current = current.NextSibling; continue; }
+            if (current.Name == "h5" && datePattern.IsMatch(current.InnerText))
+                break;
 
-            if (!foundSoup && text.Contains("0,33 l"))
+            if (current.Name == "div" && current.GetAttributeValue("class", "").Contains("list-item"))
             {
-                soup = text.Replace("0,33 l", "").Trim();
-                foundSoup = true;
-            }
-            else if (text.Contains("EUR"))
-            {
-                var priceMatch = Regex.Match(text, @"(\d+[.,]\d+)\s*EUR");
-                if (priceMatch.Success)
+                var portionNode = current.SelectSingleNode(".//h3/div[1]");
+                var nameNode = current.SelectSingleNode(".//h3/div[2]/div");
+                var priceNode = current.SelectSingleNode(".//span[@class='menu-price']");
+
+                var portion = portionNode != null ? HtmlEntity.DeEntitize(portionNode.InnerText).Trim() : "";
+                var nameRaw = nameNode != null ? HtmlEntity.DeEntitize(nameNode.InnerText).Trim() : "";
+                nameRaw = Regex.Replace(nameRaw, @"\s+", " ").Trim();
+
+                if (portion.Contains("0,33 l") && soup == null)
                 {
-                    var priceStr = priceMatch.Groups[1].Value.Replace(",", ".");
-                    decimal.TryParse(priceStr, NumberStyles.Any, CultureInfo.InvariantCulture, out var price);
-                    var itemName = Regex.Replace(text, @"^\d+\s*g\s*", "");
-                    itemName = Regex.Replace(itemName, @"^\d+\.\s*", "");
-                    itemName = Regex.Replace(itemName, @"\d+[.,]\d+\s*EUR$", "").Trim();
-                    items.Add(new MenuItem(itemName, price, null, false));
+                    var soupName = Regex.Replace(nameRaw, @"\(\s*[\d\s,]+\s*\)", "").Trim();
+                    soup = soupName;
+                }
+                else if (priceNode != null && !string.IsNullOrWhiteSpace(nameRaw))
+                {
+                    var priceText = HtmlEntity.DeEntitize(priceNode.InnerText).Trim();
+                    var priceMatch = Regex.Match(priceText, @"(\d+[.,]\d+)\s*EUR");
+                    decimal price = 0;
+                    if (priceMatch.Success)
+                    {
+                        var priceStr = priceMatch.Groups[1].Value.Replace(",", ".");
+                        decimal.TryParse(priceStr, NumberStyles.Any, CultureInfo.InvariantCulture, out price);
+                    }
+
+                    var itemName = Regex.Replace(nameRaw, @"^\d+\.\s*", "");
+                    var allergenMatch = Regex.Match(itemName, @"\(\s*([\d\s,]+)\s*\)\s*$");
+                    string? desc = null;
+                    if (allergenMatch.Success)
+                    {
+                        desc = "(" + allergenMatch.Groups[1].Value.Replace(" ", "").Trim() + ")";
+                        itemName = itemName[..allergenMatch.Index].Trim();
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(itemName))
+                        items.Add(new MenuItem(itemName, price, desc, false));
                 }
             }
+
             current = current.NextSibling;
         }
 
         if (items.Count == 0) return null;
-        return new DailyMenu(restaurantId, DateOnly.FromDateTime(today).ToString("yyyy-MM-dd"), soup, items, DateTime.Now.ToString("HH:mm"));
+        return new DailyMenu(restaurantId, DateOnly.FromDateTime(targetDate).ToString("yyyy-MM-dd"), soup, items, DateTime.Now.ToString("HH:mm"));
     }
 
     static async Task<DailyMenu?> ScrapeForumPoprad(int restaurantId, string url)
