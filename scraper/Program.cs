@@ -42,6 +42,7 @@ class Program
                     var u when u.Contains("forumpoprad.sk") => await ScrapeForumPoprad(r.Id, u),
                     var u when u.Contains("menucka.sk") => await ScrapeMenuckaSk(r.Id, u),
                     var u when u.Contains("angrychef.sk") => await ScrapeAngryChef(r.Id, u),
+                    var u when u.Contains("zavolatobsluhu.sk") => await ScrapeVeg(r.Id, u),
                     _ => null
                 };
             }
@@ -84,6 +85,13 @@ class Program
                     catch { dayMenu = null; }
                     dayMenu ??= GetStaticMenu(r.Id, date);
                 }
+                else if (r.WebsiteUrl.Contains("zavolatobsluhu.sk"))
+                {
+                    // VEG has all week's menus on one page
+                    try { dayMenu = await ScrapeVeg(r.Id, r.WebsiteUrl, date); }
+                    catch { dayMenu = null; }
+                    dayMenu ??= GetStaticMenu(r.Id, date);
+                }
                 else
                 {
                     dayMenu = GetStaticMenu(r.Id, date);
@@ -121,7 +129,8 @@ class Program
         new(5, "Angry Chef", "Námestie svätého Egídia 10/23, 058 01 Poprad", "https://www.angrychef.sk/sk/sk-menu/", "+421 910 565 685", 4.5, new() { "Ázijská", "Street Food", "Bao", "Bowls" }),
         new(6, "Mamut Pub & Restaurant", "Moyzesova 5400/28, 058 01 Poprad", "https://mamutpoprad.sk/denne-menu/", "+421 919 300 300", 4.4, new() { "Moderná", "Pub", "Obedy" }),
         new(7, "Pho King", "Poprad", "https://www.phoking.sk/", "+421 949 698 790", 4.6, new() { "Vietnamská", "Ázijská", "Pho", "Bistro" }),
-        new(8, "SAVOURY Asian Restaurant & Sushi Bar", "Námestie svätého Egídia 44/85, 058 01 Poprad", "https://wolt.com/sk/svk/poprad/restaurant/savoury-asian-restaurant-sushi-bar", "+421 949 487 358", 4.5, new() { "Ázijská", "Sushi", "Japonská", "Thajská" })
+        new(8, "SAVOURY Asian Restaurant & Sushi Bar", "Námestie svätého Egídia 44/85, 058 01 Poprad", "https://wolt.com/sk/svk/poprad/restaurant/savoury-asian-restaurant-sushi-bar", "+421 949 487 358", 4.5, new() { "Ázijská", "Sushi", "Japonská", "Thajská" }),
+        new(9, "VEG", "Nám. sv. Egídia 42/97, 058 01 Poprad", "https://www.zavolatobsluhu.sk/m/svv64o.pos", "0948 79 63 63", 4.7, new() { "Vegetariánska", "Vegánska", "Indická" })
     };
 
     // ===== SCRAPERS =====
@@ -199,6 +208,93 @@ class Program
             }
 
             current = current.NextSibling;
+        }
+
+        if (items.Count == 0) return null;
+        return new DailyMenu(restaurantId, DateOnly.FromDateTime(targetDate).ToString("yyyy-MM-dd"), soup, items, DateTime.Now.ToString("HH:mm"));
+    }
+
+    static async Task<DailyMenu?> ScrapeVeg(int restaurantId, string url, DateTime? forDate = null)
+    {
+        var html = await Http.GetStringAsync(url);
+        var doc = new HtmlDocument();
+        doc.LoadHtml(html);
+
+        var targetDate = forDate ?? DateTime.Today;
+
+        // Each day is in div.pos-detail-daymnu containing div.daily-menu-pnl
+        var dayNodes = doc.DocumentNode.SelectNodes("//div[contains(@class,'pos-detail-daymnu')]");
+        if (dayNodes == null) return null;
+
+        // Day titles are like "Monday 29.6." or "Thursday 2.7. - Today"
+        // We need to match by day.month format
+        var targetDayMonth = $"{targetDate.Day}.{targetDate.Month}.";
+
+        HtmlNode? targetDay = null;
+        foreach (var dayNode in dayNodes)
+        {
+            var titleNode = dayNode.SelectSingleNode(".//div[contains(@class,'daily-menu-title')]/span");
+            if (titleNode == null) continue;
+            var titleText = HtmlEntity.DeEntitize(titleNode.InnerText).Trim();
+            if (titleText.Contains(targetDayMonth))
+            { targetDay = dayNode; break; }
+        }
+        if (targetDay == null) return null;
+
+        // Extract soup from daily-menu-beforetxt
+        string? soup = null;
+        var soupNode = targetDay.SelectSingleNode(".//div[contains(@class,'daily-menu-beforetxt')]");
+        if (soupNode != null)
+        {
+            var beforeText = HtmlEntity.DeEntitize(soupNode.InnerText).Trim();
+            // Format: "Soup: 1. Name 0,3l allergens | price € | included..."
+            var soupMatch = Regex.Match(beforeText, @"1\.\s*(.+?)(?:\s+\d+[.,]\d+\s*l|\s*\|)");
+            if (soupMatch.Success)
+                soup = soupMatch.Groups[1].Value.Trim();
+        }
+
+        // Extract items from h4.sm-det-name
+        var items = new List<MenuItem>();
+        var itemNodes = targetDay.SelectNodes(".//div[contains(@class,'daily-menu-items')]//div[contains(@class,'sm-detail-record')]");
+        if (itemNodes == null) return null;
+
+        foreach (var itemNode in itemNodes)
+        {
+            var nameNode = itemNode.SelectSingleNode(".//span[contains(@class,'sm-det-name-in')]");
+            if (nameNode == null) continue;
+            var name = HtmlEntity.DeEntitize(nameNode.InnerText).Trim();
+            name = Regex.Replace(name, @"\s+", " ");
+
+            // Price: span.price contains price as text like "7,90 €"
+            var priceSpan = itemNode.SelectSingleNode(".//p[contains(@class,'sm-det-props')]//span[contains(@class,'price')]");
+            decimal price = 0;
+            if (priceSpan != null)
+            {
+                var priceText = HtmlEntity.DeEntitize(priceSpan.InnerText).Trim();
+                var priceMatch = Regex.Match(priceText, @"(\d+)[.,](\d+)\s*€");
+                if (priceMatch.Success)
+                {
+                    var priceStr = $"{priceMatch.Groups[1].Value}.{priceMatch.Groups[2].Value}";
+                    decimal.TryParse(priceStr, NumberStyles.Any, CultureInfo.InvariantCulture, out price);
+                }
+            }
+
+            // Allergens from propval
+            var propNodes = itemNode.SelectNodes(".//p[contains(@class,'sm-det-props')]/span[contains(@class,'propval')]");
+            string? desc = null;
+            if (propNodes != null)
+            {
+                foreach (var prop in propNodes)
+                {
+                    var propText = HtmlEntity.DeEntitize(prop.InnerText).Trim();
+                    // Allergens are like "1,6,7,10"
+                    if (Regex.IsMatch(propText, @"^[\d,]+$"))
+                        desc = $"({propText})";
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(name))
+                items.Add(new MenuItem(name, price, desc, false));
         }
 
         if (items.Count == 0) return null;

@@ -8,7 +8,7 @@ Web app showing daily lunch menus from restaurants.
 
 | # | Restaurant | Source |
 |---|-----------|--------|
-| 1 | Popradská Plzeňka | restauracie.sme.sk |
+| 1 | Popradská Plzeňka | popradskaplzenka.sk |
 | 2 | Aquacity Poprad | aquacity.sk |
 | 3 | Rock'n'Roll Steak Pub (Forum Poprad) | forumpoprad.sk |
 | 4 | Barn Club | menucka.sk |
@@ -16,6 +16,7 @@ Web app showing daily lunch menus from restaurants.
 | 6 | Mamut Pub & Restaurant | mamutpoprad.sk |
 | 7 | Pho King | phoking.sk |
 | 8 | SAVOURY Asian Restaurant & Sushi Bar | wolt.com |
+| 9 | VEG | veg.sk |
 
 ## Features
 
