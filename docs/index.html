@@ -68,24 +68,21 @@
 
     <div id="menus-container"></div>
 
-    <!-- Stress Relief Game -->
+    <!-- Stress Relief Game - Full page overlay -->
     <div class="stress-section">
-        <button type="button" class="stress-toggle-btn" onclick="toggleStressGame()">Hladný a frustrovaný? Rozbi niečo!</button>
+        <button type="button" class="stress-toggle-btn" onclick="toggleStressGame()">Hladny a frustrovany? Rozbi stranku!</button>
     </div>
-    <div id="stress-game" class="stress-game" style="display:none;">
-        <div class="stress-header">
-            <h3>Stress Relief!</h3>
-            <button type="button" class="stats-close" onclick="toggleStressGame()">&times;</button>
-        </div>
-        <div class="stress-tools">
+    <div id="stress-overlay" class="stress-overlay" style="display:none;">
+        <div class="stress-toolbar">
             <button class="tool-btn active" data-tool="hammer" onclick="selectTool('hammer')">Kladivo</button>
-            <button class="tool-btn" data-tool="fire" onclick="selectTool('fire')">Plameňomet</button>
+            <button class="tool-btn" data-tool="fire" onclick="selectTool('fire')">Plamenomet</button>
             <button class="tool-btn" data-tool="paint" onclick="selectTool('paint')">Farba</button>
             <button class="tool-btn" data-tool="lightning" onclick="selectTool('lightning')">Blesk</button>
+            <button class="tool-btn" data-tool="chainsaw" onclick="selectTool('chainsaw')">Pila</button>
             <button class="tool-btn" data-tool="eraser" onclick="selectTool('eraser')">Guma</button>
+            <button class="tool-btn tool-btn-close" onclick="toggleStressGame()">Ukoncit</button>
         </div>
-        <canvas id="stress-canvas" width="800" height="400"></canvas>
-        <p class="stress-hint">Klikaj a ťahaj po obrazovke! Vyber si nástroj a zbav sa frustrácie.</p>
+        <canvas id="stress-canvas"></canvas>
     </div>
 
     <footer class="page-footer">
@@ -362,38 +359,37 @@ function clearStats() {
 function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 function escAttr(s) { return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"'); }
 
-// ===== STRESS RELIEF GAME =====
+// ===== STRESS RELIEF GAME (full page overlay) =====
 let stressCanvas, stressCtx, currentTool = 'hammer', isDrawing = false;
 
 function toggleStressGame() {
-    const panel = document.getElementById('stress-game');
-    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-    if (panel.style.display === 'block') initStressCanvas();
+    const overlay = document.getElementById('stress-overlay');
+    if (overlay.style.display === 'none') {
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        initStressCanvas();
+    } else {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+    }
 }
 
 function selectTool(tool) {
     currentTool = tool;
-    document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector(`[data-tool="${tool}"]`).classList.add('active');
-    const canvas = document.getElementById('stress-canvas');
-    const cursors = { hammer: 'crosshair', fire: 'pointer', paint: 'cell', lightning: 'default', eraser: 'grab' };
-    canvas.style.cursor = cursors[tool] || 'crosshair';
+    document.querySelectorAll('.stress-overlay .tool-btn').forEach(b => b.classList.remove('active'));
+    const btn = document.querySelector(`.stress-overlay [data-tool="${tool}"]`);
+    if (btn) btn.classList.add('active');
+    const cursors = { hammer: 'crosshair', fire: 'pointer', paint: 'cell', lightning: 'default', chainsaw: 'col-resize', eraser: 'grab' };
+    stressCanvas.style.cursor = cursors[tool] || 'crosshair';
 }
 
 function initStressCanvas() {
     stressCanvas = document.getElementById('stress-canvas');
     stressCtx = stressCanvas.getContext('2d');
-    stressCanvas.width = stressCanvas.offsetWidth;
-    stressCanvas.height = 400;
-    // Draw a fake "desktop" background
-    stressCtx.fillStyle = '#1a1a2e';
-    stressCtx.fillRect(0, 0, stressCanvas.width, stressCanvas.height);
-    // Draw some fake windows
-    drawFakeWindow(30, 30, 200, 150, 'Windows Update', 'Restarting in 5 min...');
-    drawFakeWindow(260, 60, 220, 130, 'Error', 'Something went wrong :(');
-    drawFakeWindow(100, 200, 250, 140, 'Loading...', 'Please wait forever...');
-    drawFakeWindow(400, 180, 200, 130, '404', 'Obed not found');
-    if (stressCanvas.width > 500) drawFakeWindow(500, 30, 180, 120, 'WiFi', 'No connection');
+    stressCanvas.width = window.innerWidth;
+    stressCanvas.height = window.innerHeight;
+    // Start transparent - you see the real page underneath!
+    stressCtx.clearRect(0, 0, stressCanvas.width, stressCanvas.height);
 
     stressCanvas.onmousedown = (e) => { isDrawing = true; applyTool(e); };
     stressCanvas.onmousemove = (e) => { if (isDrawing) applyTool(e); };
@@ -402,21 +398,16 @@ function initStressCanvas() {
     stressCanvas.ontouchstart = (e) => { isDrawing = true; applyTool(e.touches[0]); e.preventDefault(); };
     stressCanvas.ontouchmove = (e) => { if (isDrawing) applyTool(e.touches[0]); e.preventDefault(); };
     stressCanvas.ontouchend = () => isDrawing = false;
-}
 
-function drawFakeWindow(x, y, w, h, title, content) {
-    stressCtx.fillStyle = '#2d2d44';
-    stressCtx.fillRect(x, y, w, h);
-    stressCtx.fillStyle = '#4a4a6a';
-    stressCtx.fillRect(x, y, w, 25);
-    stressCtx.fillStyle = '#fff';
-    stressCtx.font = '12px monospace';
-    stressCtx.fillText(title, x + 8, y + 17);
-    stressCtx.fillStyle = '#e74c3c';
-    stressCtx.fillText('X', x + w - 15, y + 17);
-    stressCtx.fillStyle = '#aaa';
-    stressCtx.font = '13px sans-serif';
-    stressCtx.fillText(content, x + 15, y + 55);
+    window.onresize = () => {
+        if (document.getElementById('stress-overlay').style.display !== 'none') {
+            // Preserve existing drawing
+            const imgData = stressCtx.getImageData(0, 0, stressCanvas.width, stressCanvas.height);
+            stressCanvas.width = window.innerWidth;
+            stressCanvas.height = window.innerHeight;
+            stressCtx.putImageData(imgData, 0, 0);
+        }
+    };
 }
 
 function applyTool(e) {
@@ -426,71 +417,122 @@ function applyTool(e) {
 
     switch (currentTool) {
         case 'hammer':
-            // Cracks
-            for (let i = 0; i < 5; i++) {
-                stressCtx.beginPath();
-                stressCtx.moveTo(x, y);
-                stressCtx.lineTo(x + (Math.random() - 0.5) * 80, y + (Math.random() - 0.5) * 80);
-                stressCtx.strokeStyle = `rgba(255,255,255,${Math.random() * 0.8 + 0.2})`;
-                stressCtx.lineWidth = Math.random() * 3 + 1;
-                stressCtx.stroke();
-            }
-            // Impact circle
-            stressCtx.beginPath();
-            stressCtx.arc(x, y, 5, 0, Math.PI * 2);
-            stressCtx.fillStyle = 'rgba(255,255,255,0.8)';
-            stressCtx.fill();
-            break;
-
-        case 'fire':
-            // Flame particles
-            for (let i = 0; i < 8; i++) {
-                const fx = x + (Math.random() - 0.5) * 30;
-                const fy = y + (Math.random() - 0.5) * 30;
-                const r = Math.random() * 15 + 5;
-                const grad = stressCtx.createRadialGradient(fx, fy, 0, fx, fy, r);
-                grad.addColorStop(0, `rgba(255,${Math.floor(Math.random()*150+100)},0,0.9)`);
-                grad.addColorStop(0.5, `rgba(255,${Math.floor(Math.random()*80)},0,0.5)`);
-                grad.addColorStop(1, 'rgba(0,0,0,0)');
-                stressCtx.fillStyle = grad;
-                stressCtx.fillRect(fx - r, fy - r, r * 2, r * 2);
-            }
-            break;
-
-        case 'paint':
-            // Color splatter
+            // Glass cracks
             for (let i = 0; i < 6; i++) {
                 stressCtx.beginPath();
-                const px = x + (Math.random() - 0.5) * 40;
-                const py = y + (Math.random() - 0.5) * 40;
-                stressCtx.arc(px, py, Math.random() * 12 + 3, 0, Math.PI * 2);
-                stressCtx.fillStyle = `hsl(${Math.random()*360}, 80%, 55%)`;
+                stressCtx.moveTo(x, y);
+                const angle = Math.random() * Math.PI * 2;
+                const len = Math.random() * 60 + 20;
+                stressCtx.lineTo(x + Math.cos(angle) * len, y + Math.sin(angle) * len);
+                stressCtx.strokeStyle = `rgba(255,255,255,${Math.random()*0.7+0.3})`;
+                stressCtx.lineWidth = Math.random() * 2 + 0.5;
+                stressCtx.stroke();
+            }
+            // Impact point
+            stressCtx.beginPath();
+            stressCtx.arc(x, y, 4, 0, Math.PI * 2);
+            stressCtx.fillStyle = 'rgba(255,255,255,0.9)';
+            stressCtx.fill();
+            // Dark shatter marks
+            for (let i = 0; i < 3; i++) {
+                stressCtx.beginPath();
+                stressCtx.arc(x + (Math.random()-0.5)*15, y + (Math.random()-0.5)*15, Math.random()*3+1, 0, Math.PI*2);
+                stressCtx.fillStyle = 'rgba(0,0,0,0.4)';
                 stressCtx.fill();
             }
             break;
 
+        case 'fire':
+            for (let i = 0; i < 10; i++) {
+                const fx = x + (Math.random() - 0.5) * 40;
+                const fy = y + (Math.random() - 0.5) * 40 - Math.random() * 20;
+                const r = Math.random() * 18 + 6;
+                const grad = stressCtx.createRadialGradient(fx, fy, 0, fx, fy, r);
+                grad.addColorStop(0, `rgba(255,${Math.floor(Math.random()*150+105)},0,0.85)`);
+                grad.addColorStop(0.4, `rgba(255,${Math.floor(Math.random()*60)},0,0.5)`);
+                grad.addColorStop(1, 'rgba(0,0,0,0)');
+                stressCtx.fillStyle = grad;
+                stressCtx.fillRect(fx - r, fy - r, r * 2, r * 2);
+            }
+            // Smoke
+            for (let i = 0; i < 3; i++) {
+                stressCtx.beginPath();
+                stressCtx.arc(x + (Math.random()-0.5)*30, y - Math.random()*40 - 10, Math.random()*10+5, 0, Math.PI*2);
+                stressCtx.fillStyle = `rgba(50,50,50,${Math.random()*0.3})`;
+                stressCtx.fill();
+            }
+            break;
+
+        case 'paint':
+            for (let i = 0; i < 8; i++) {
+                stressCtx.beginPath();
+                const px = x + (Math.random() - 0.5) * 50;
+                const py = y + (Math.random() - 0.5) * 50;
+                stressCtx.arc(px, py, Math.random() * 15 + 4, 0, Math.PI * 2);
+                stressCtx.fillStyle = `hsla(${Math.random()*360}, 85%, 55%, 0.8)`;
+                stressCtx.fill();
+            }
+            // Drips
+            if (Math.random() > 0.6) {
+                stressCtx.beginPath();
+                stressCtx.moveTo(x, y);
+                stressCtx.lineTo(x + (Math.random()-0.5)*5, y + Math.random()*40+20);
+                stressCtx.strokeStyle = `hsla(${Math.random()*360}, 85%, 55%, 0.7)`;
+                stressCtx.lineWidth = Math.random()*4+2;
+                stressCtx.stroke();
+            }
+            break;
+
         case 'lightning':
-            // Lightning bolt
             stressCtx.beginPath();
-            stressCtx.moveTo(x, 0);
-            let lx = x, ly = 0;
+            let lx = x + (Math.random()-0.5)*100, ly = 0;
+            stressCtx.moveTo(lx, ly);
             while (ly < y) {
-                lx += (Math.random() - 0.5) * 30;
-                ly += Math.random() * 30 + 10;
+                lx += (Math.random() - 0.5) * 40;
+                ly += Math.random() * 25 + 10;
                 stressCtx.lineTo(lx, Math.min(ly, y));
             }
-            stressCtx.strokeStyle = `rgba(150,200,255,${Math.random()*0.5+0.5})`;
+            stressCtx.strokeStyle = `rgba(180,220,255,${Math.random()*0.6+0.4})`;
             stressCtx.lineWidth = Math.random() * 3 + 1;
+            stressCtx.shadowColor = 'rgba(100,150,255,0.8)';
+            stressCtx.shadowBlur = 15;
             stressCtx.stroke();
+            stressCtx.shadowBlur = 0;
             // Flash
-            stressCtx.fillStyle = 'rgba(200,220,255,0.1)';
+            stressCtx.fillStyle = 'rgba(200,220,255,0.05)';
             stressCtx.fillRect(0, 0, stressCanvas.width, stressCanvas.height);
             break;
 
+        case 'chainsaw':
+            // Jagged cut line
+            stressCtx.beginPath();
+            for (let i = -20; i <= 20; i += 4) {
+                const cx = x + i;
+                const cy = y + (Math.random()-0.5)*8;
+                if (i === -20) stressCtx.moveTo(cx, cy);
+                else stressCtx.lineTo(cx, cy);
+            }
+            stressCtx.strokeStyle = `rgba(0,0,0,0.7)`;
+            stressCtx.lineWidth = 3;
+            stressCtx.stroke();
+            // Sawdust/sparks
+            for (let i = 0; i < 5; i++) {
+                stressCtx.beginPath();
+                stressCtx.arc(x + (Math.random()-0.5)*30, y + (Math.random()-0.5)*20, Math.random()*2+1, 0, Math.PI*2);
+                stressCtx.fillStyle = `rgba(255,${Math.floor(Math.random()*200+55)},0,${Math.random()*0.8+0.2})`;
+                stressCtx.fill();
+            }
+            // Dark gash
+            stressCtx.fillStyle = 'rgba(0,0,0,0.5)';
+            stressCtx.fillRect(x-15, y-2, 30, 4);
+            break;
+
         case 'eraser':
-            stressCtx.clearRect(x - 20, y - 20, 40, 40);
-            stressCtx.fillStyle = '#1a1a2e';
-            stressCtx.fillRect(x - 20, y - 20, 40, 40);
+            stressCtx.globalCompositeOperation = 'destination-out';
+            stressCtx.beginPath();
+            stressCtx.arc(x, y, 25, 0, Math.PI * 2);
+            stressCtx.fill();
+            stressCtx.globalCompositeOperation = 'source-over';
             break;
     }
 }
