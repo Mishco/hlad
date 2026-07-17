@@ -70,22 +70,22 @@
 
     <!-- Stress Relief Game -->
     <div class="stress-section">
-        <button type="button" class="stress-toggle-btn" onclick="toggleStressGame()">Hladny a frustrovaný? Znic nieco!</button>
+        <button type="button" class="stress-toggle-btn" onclick="toggleStressGame()">Hladný a frustrovaný? Rozbi niečo!</button>
     </div>
     <div id="stress-game" class="stress-game" style="display:none;">
         <div class="stress-header">
-            <h3>Stress Relief - Znic si desktop!</h3>
+            <h3>Stress Relief!</h3>
             <button type="button" class="stats-close" onclick="toggleStressGame()">&times;</button>
         </div>
         <div class="stress-tools">
             <button class="tool-btn active" data-tool="hammer" onclick="selectTool('hammer')">Kladivo</button>
-            <button class="tool-btn" data-tool="fire" onclick="selectTool('fire')">Plamenomet</button>
+            <button class="tool-btn" data-tool="fire" onclick="selectTool('fire')">Plameňomet</button>
             <button class="tool-btn" data-tool="paint" onclick="selectTool('paint')">Farba</button>
             <button class="tool-btn" data-tool="lightning" onclick="selectTool('lightning')">Blesk</button>
             <button class="tool-btn" data-tool="eraser" onclick="selectTool('eraser')">Guma</button>
         </div>
         <canvas id="stress-canvas" width="800" height="400"></canvas>
-        <p class="stress-hint">Klikaj a tahaj po platne! Vybi si nastroj a zbav sa frustrácie.</p>
+        <p class="stress-hint">Klikaj a ťahaj po obrazovke! Vyber si nástroj a zbav sa frustrácie.</p>
     </div>
 
     <footer class="page-footer">
