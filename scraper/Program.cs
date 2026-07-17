@@ -1,5 +1,7 @@
 using System.Globalization;
+using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
@@ -9,10 +11,14 @@ public record Restaurant(int Id, string Name, string Address, string WebsiteUrl,
 public record MenuItem(string Name, decimal Price, string? Description, bool IsVegetarian);
 public record DailyMenu(int RestaurantId, string Date, string? SoupOfTheDay, List<MenuItem> Items, string LastUpdated);
 public record MenuData(List<Restaurant> Restaurants, List<DailyMenu> Menus, string GeneratedAt);
-
 class Program
 {
     static readonly HttpClient Http = new();
+    static readonly string? GeminiApiKey = Environment.GetEnvironmentVariable("GEMINI_API_KEY");
+    static readonly string? MistralApiKey = Environment.GetEnvironmentVariable("MISTRAL_API_KEY");
+    static readonly string? LlmProvider = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MISTRAL_API_KEY")) ? "mistral"
+                                        : !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("GEMINI_API_KEY")) ? "gemini"
+                                        : null;
 
     static async Task Main(string[] args)
     {
@@ -20,85 +26,100 @@ class Program
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
 
         var restaurants = GetRestaurants();
-        var menus = new List<DailyMenu>();
-
-        // Scrape for today (Mon-Fri)
+        var weekMenus = new List<DailyMenu>();
         var today = DateTime.Today;
+        var monday = today.AddDays(-(int)today.DayOfWeek + 1);
+
         if (today.DayOfWeek == DayOfWeek.Saturday || today.DayOfWeek == DayOfWeek.Sunday)
         {
             Console.WriteLine("Weekend - using static data only");
         }
 
+        var useAI = LlmProvider != null;
+        if (useAI)
+            Console.WriteLine($"AI scraping enabled ({LlmProvider})\n");
+        else
+            Console.WriteLine("No MISTRAL_API_KEY or GEMINI_API_KEY - using legacy scrapers + static data\n");
+
         foreach (var r in restaurants)
         {
             Console.Write($"Scraping {r.Name}... ");
-            DailyMenu? menu = null;
+            List<DailyMenu>? menus = null;
 
             try
             {
-                menu = r.WebsiteUrl switch
+                if (useAI)
                 {
-                    var u when u.Contains("popradskaplzenka.sk") => await ScrapePlzenka(r.Id, u),
-                    var u when u.Contains("forumpoprad.sk") => await ScrapeForumPoprad(r.Id, u),
-                    var u when u.Contains("menucka.sk") => await ScrapeMenuckaSk(r.Id, u),
-                    var u when u.Contains("angrychef.sk") => await ScrapeAngryChef(r.Id, u),
-                    var u when u.Contains("zavolatobsluhu.sk") => await ScrapeVeg(r.Id, u),
-                    _ => null
-                };
+                    menus = await ScrapeWithAI(r);
+                }
+
+                // Fallback to legacy scrapers if AI didn't work
+                if (menus == null || menus.Count == 0)
+                {
+                    // Try multi-day scrapers first (Plzeňka, VEG have full week on one page)
+                    if (r.WebsiteUrl.Contains("popradskaplzenka.sk") || r.WebsiteUrl.Contains("zavolatobsluhu.sk"))
+                    {
+                        menus = new List<DailyMenu>();
+                        for (int d = 0; d < 5; d++)
+                        {
+                            var date = monday.AddDays(d);
+                            DailyMenu? dayMenu = null;
+                            try
+                            {
+                                dayMenu = r.WebsiteUrl.Contains("popradskaplzenka.sk")
+                                    ? await ScrapePlzenka(r.Id, r.WebsiteUrl, date)
+                                    : await ScrapeVeg(r.Id, r.WebsiteUrl, date);
+                            }
+                            catch { }
+                            if (dayMenu != null) menus.Add(dayMenu);
+                        }
+                        if (menus.Count == 0) menus = null;
+                    }
+                    else
+                    {
+                        // Single-day scrapers
+                        var todayMenu = r.WebsiteUrl switch
+                        {
+                            var u when u.Contains("forumpoprad.sk") => await ScrapeForumPoprad(r.Id, u),
+                            var u when u.Contains("menucka.sk") => await ScrapeMenuckaSk(r.Id, u),
+                            var u when u.Contains("angrychef.sk") => await ScrapeAngryChef(r.Id, u),
+                            _ => null
+                        };
+                        if (todayMenu != null)
+                            menus = new List<DailyMenu> { todayMenu };
+                    }
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"ERROR: {ex.Message}");
+                Console.Write($"ERROR: {ex.Message} ");
             }
 
-            // Fallback to static data
-            menu ??= GetStaticMenu(r.Id, today);
+            // For each day Mon-Fri, add scraped or static menu
+            int addedCount = 0;
+            for (int d = 0; d < 5; d++)
+            {
+                var date = monday.AddDays(d);
+                var dateStr = DateOnly.FromDateTime(date).ToString("yyyy-MM-dd");
+                var scraped = menus?.FirstOrDefault(m => m.Date == dateStr);
 
-            if (menu != null)
-            {
-                menus.Add(menu);
-                Console.WriteLine($"OK ({menu.Items.Count} items)");
-            }
-            else
-            {
-                Console.WriteLine("no menu");
-            }
-        }
-
-        // Also generate static menus for the whole week (Mon-Fri)
-        var weekMenus = new List<DailyMenu>();
-        var monday = today.AddDays(-(int)today.DayOfWeek + 1);
-        for (int d = 0; d < 5; d++)
-        {
-            var date = monday.AddDays(d);
-            foreach (var r in restaurants)
-            {
-                DailyMenu? dayMenu;
-                if (date == today)
+                if (scraped != null)
                 {
-                    dayMenu = menus.FirstOrDefault(m => m.RestaurantId == r.Id);
-                }
-                else if (r.WebsiteUrl.Contains("popradskaplzenka.sk"))
-                {
-                    // Plzeňka has all week's menus on one page
-                    try { dayMenu = await ScrapePlzenka(r.Id, r.WebsiteUrl, date); }
-                    catch { dayMenu = null; }
-                    dayMenu ??= GetStaticMenu(r.Id, date);
-                }
-                else if (r.WebsiteUrl.Contains("zavolatobsluhu.sk"))
-                {
-                    // VEG has all week's menus on one page
-                    try { dayMenu = await ScrapeVeg(r.Id, r.WebsiteUrl, date); }
-                    catch { dayMenu = null; }
-                    dayMenu ??= GetStaticMenu(r.Id, date);
+                    weekMenus.Add(scraped);
+                    addedCount += scraped.Items.Count;
                 }
                 else
                 {
-                    dayMenu = GetStaticMenu(r.Id, date);
+                    var staticMenu = GetStaticMenu(r.Id, date);
+                    if (staticMenu != null)
+                    {
+                        weekMenus.Add(staticMenu);
+                        addedCount += staticMenu.Items.Count;
+                    }
                 }
-                if (dayMenu != null)
-                    weekMenus.Add(dayMenu);
             }
+
+            Console.WriteLine($"OK ({addedCount} items across week)");
         }
 
         var output = new MenuData(
@@ -117,6 +138,7 @@ class Program
         var json = JsonSerializer.Serialize(output, jsonOptions);
         Directory.CreateDirectory(Path.GetDirectoryName(outputPath)!);
         await File.WriteAllTextAsync(outputPath, json);
+
         Console.WriteLine($"\nWritten to {outputPath} ({weekMenus.Count} menus for {restaurants.Count} restaurants)");
     }
 
@@ -132,6 +154,195 @@ class Program
         new(8, "SAVOURY Asian Restaurant & Sushi Bar", "Námestie svätého Egídia 44/85, 058 01 Poprad", "https://wolt.com/sk/svk/poprad/restaurant/savoury-asian-restaurant-sushi-bar", "+421 949 487 358", 4.5, new() { "Ázijská", "Sushi", "Japonská", "Thajská" }),
         new(9, "VEG", "Nám. sv. Egídia 42/97, 058 01 Poprad", "https://www.zavolatobsluhu.sk/m/svv64o.pos", "0948 79 63 63", 4.7, new() { "Vegetariánska", "Vegánska", "Indická" })
     };
+
+    // ===== AI SCRAPER (Gemini Flash) =====
+
+    static async Task<List<DailyMenu>?> ScrapeWithAI(Restaurant restaurant)
+    {
+        if (LlmProvider == null) return null;
+
+        // Fetch the page content
+        string pageText;
+        try
+        {
+            var html = await Http.GetStringAsync(restaurant.WebsiteUrl);
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
+            // Extract visible text, strip scripts/styles
+            foreach (var script in doc.DocumentNode.SelectNodes("//script|//style|//noscript|//svg") ?? Enumerable.Empty<HtmlNode>())
+                script.Remove();
+            pageText = HtmlEntity.DeEntitize(doc.DocumentNode.InnerText);
+            // Clean up whitespace
+            pageText = Regex.Replace(pageText, @"[ \t]+", " ");
+            pageText = Regex.Replace(pageText, @"\n\s*\n+", "\n");
+            pageText = pageText.Trim();
+            // Limit to 8000 chars to stay within token limits
+            if (pageText.Length > 8000)
+                pageText = pageText[..8000];
+        }
+        catch
+        {
+            return null;
+        }
+
+        var today = DateTime.Today;
+        var monday = today.AddDays(-(int)today.DayOfWeek + 1);
+        var friday = monday.AddDays(4);
+
+        var prompt = $@"Extract the weekly lunch menu from this restaurant page text. 
+Restaurant: {restaurant.Name}
+Week: {monday:dd.MM.yyyy} - {friday:dd.MM.yyyy}
+
+Return ONLY valid JSON (no markdown, no explanation) in this exact format:
+{{
+  ""days"": [
+    {{
+      ""date"": ""YYYY-MM-DD"",
+      ""soup"": ""soup name or null"",
+      ""items"": [
+        {{""name"": ""dish name"", ""price"": 7.90, ""description"": ""allergens or extra info or null"", ""isVegetarian"": false}}
+      ]
+    }}
+  ]
+}}
+
+Rules:
+- Include all days Monday to Friday that have menu data
+- Remove numbering prefixes like ""1."", ""2."" from dish names
+- Price should be a decimal number (e.g. 7.90), use 0 if not listed
+- If the page has no daily menu data (e.g. it's a permanent menu or just info), return {{""days"": []}}
+- Keep dish names in original Slovak language
+- For soup, extract just the name without price/allergens
+- description field: include allergens like ""(1,3,7)"" or weight like ""150g"" if available, null otherwise
+
+PAGE TEXT:
+{pageText}";
+
+        try
+        {
+            string responseJson;
+
+            if (LlmProvider == "mistral")
+            {
+                var requestBody = new
+                {
+                    model = "mistral-small-latest",
+                    messages = new[] { new { role = "user", content = prompt } },
+                    temperature = 0.1,
+                    max_tokens = 4096
+                };
+
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://api.mistral.ai/v1/chat/completions");
+                request.Headers.Add("Authorization", $"Bearer {MistralApiKey}");
+                request.Content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
+
+                var response = await Http.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.Write($"[AI {response.StatusCode}] ");
+                    return null;
+                }
+                responseJson = await response.Content.ReadAsStringAsync();
+
+                using var respDoc = JsonDocument.Parse(responseJson);
+                var textResult = respDoc.RootElement
+                    .GetProperty("choices")[0]
+                    .GetProperty("message")
+                    .GetProperty("content")
+                    .GetString();
+
+                if (string.IsNullOrEmpty(textResult)) return null;
+                return ParseAIMenuResponse(textResult, restaurant.Id);
+            }
+            else // gemini
+            {
+                var requestBody = new
+                {
+                    contents = new[] { new { parts = new[] { new { text = prompt } } } },
+                    generationConfig = new { temperature = 0.1, maxOutputTokens = 4096 }
+                };
+
+                var response = await Http.PostAsync(
+                    $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GeminiApiKey}",
+                    new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json")
+                );
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.Write($"[AI {response.StatusCode}] ");
+                    return null;
+                }
+                responseJson = await response.Content.ReadAsStringAsync();
+
+                using var respDoc = JsonDocument.Parse(responseJson);
+                var textResult = respDoc.RootElement
+                    .GetProperty("candidates")[0]
+                    .GetProperty("content")
+                    .GetProperty("parts")[0]
+                    .GetProperty("text")
+                    .GetString();
+
+                if (string.IsNullOrEmpty(textResult)) return null;
+                return ParseAIMenuResponse(textResult, restaurant.Id);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.Write($"[AI error: {ex.Message}] ");
+            return null;
+        }
+    }
+
+    static List<DailyMenu>? ParseAIMenuResponse(string textResult, int restaurantId)
+    {
+        // Strip markdown code fences if present
+        textResult = Regex.Replace(textResult, @"^```(?:json)?\s*\n?", "", RegexOptions.Multiline);
+        textResult = Regex.Replace(textResult, @"\n?```\s*$", "", RegexOptions.Multiline);
+        textResult = textResult.Trim();
+
+        using var menuDoc = JsonDocument.Parse(textResult);
+        var days = menuDoc.RootElement.GetProperty("days");
+
+        var menus = new List<DailyMenu>();
+        foreach (var day in days.EnumerateArray())
+        {
+            var date = day.GetProperty("date").GetString();
+            if (string.IsNullOrEmpty(date)) continue;
+
+            string? soup = null;
+            if (day.TryGetProperty("soup", out var soupEl) && soupEl.ValueKind == JsonValueKind.String)
+                soup = soupEl.GetString();
+
+            var items = new List<MenuItem>();
+            foreach (var item in day.GetProperty("items").EnumerateArray())
+            {
+                var name = item.GetProperty("name").GetString() ?? "";
+                decimal price = 0;
+                if (item.TryGetProperty("price", out var priceEl))
+                {
+                    if (priceEl.ValueKind == JsonValueKind.Number)
+                        price = priceEl.GetDecimal();
+                }
+                string? desc = null;
+                if (item.TryGetProperty("description", out var descEl) && descEl.ValueKind == JsonValueKind.String)
+                    desc = descEl.GetString();
+                bool isVeg = false;
+                if (item.TryGetProperty("isVegetarian", out var vegEl) && vegEl.ValueKind == JsonValueKind.True)
+                    isVeg = true;
+
+                if (!string.IsNullOrWhiteSpace(name))
+                    items.Add(new MenuItem(name, price, desc, isVeg));
+            }
+
+            if (items.Count > 0)
+                menus.Add(new DailyMenu(restaurantId, date, soup, items, DateTime.Now.ToString("HH:mm")));
+        }
+
+        if (menus.Count > 0)
+            Console.Write($"[AI: {menus.Count} days] ");
+
+        return menus.Count > 0 ? menus : null;
+    }
 
     // ===== SCRAPERS =====
 
