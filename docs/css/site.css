@@ -810,12 +810,94 @@ body {
     background: #2d2d44;
     color: #ccc;
     border: 2px solid #3d3d5c;
-    padding: 6px 14px;
-    border-radius: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: 600;
     transition: all 0.2s;
+    position: relative;
+}
+
+.tool-icon {
+    font-size: 1.4rem;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.stress-overlay .tool-btn:hover .tool-icon {
+    animation: toolBounce 0.4s ease;
+}
+
+.stress-overlay .tool-btn[data-tool="hammer"]:hover .tool-icon {
+    animation: toolSmash 0.3s ease;
+}
+
+.stress-overlay .tool-btn[data-tool="fire"]:hover .tool-icon {
+    animation: toolFlicker 0.4s ease infinite;
+}
+
+.stress-overlay .tool-btn[data-tool="paint"]:hover .tool-icon {
+    animation: toolSpin 0.5s ease;
+}
+
+.stress-overlay .tool-btn[data-tool="lightning"]:hover .tool-icon {
+    animation: toolZap 0.3s ease;
+}
+
+.stress-overlay .tool-btn[data-tool="chainsaw"]:hover .tool-icon {
+    animation: toolVibrate 0.1s linear infinite;
+}
+
+.stress-overlay .tool-btn[data-tool="eraser"]:hover .tool-icon {
+    animation: toolWipe 0.4s ease;
+}
+
+.stress-overlay .tool-btn.active .tool-icon {
+    transform: scale(1.2);
+}
+
+@keyframes toolBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes toolSmash {
+    0% { transform: rotate(0deg) translateY(0); }
+    40% { transform: rotate(-20deg) translateY(-4px); }
+    70% { transform: rotate(10deg) translateY(2px); }
+    100% { transform: rotate(0deg) translateY(0); }
+}
+
+@keyframes toolFlicker {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    25% { transform: scale(1.1) rotate(-3deg); opacity: 0.8; }
+    50% { transform: scale(0.95) rotate(3deg); opacity: 1; }
+    75% { transform: scale(1.15) rotate(-2deg); opacity: 0.9; }
+}
+
+@keyframes toolSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes toolZap {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    30% { transform: scale(1.4); opacity: 0.6; }
+    60% { transform: scale(0.8); opacity: 1; }
+}
+
+@keyframes toolVibrate {
+    0% { transform: translateX(-1px) rotate(-1deg); }
+    50% { transform: translateX(1px) rotate(1deg); }
+    100% { transform: translateX(-1px) rotate(-1deg); }
+}
+
+@keyframes toolWipe {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+    100% { transform: translateX(0); }
 }
 
 .stress-overlay .tool-btn:hover {

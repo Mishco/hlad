@@ -70,17 +70,17 @@
 
     <!-- Stress Relief Game - Full page overlay -->
     <div class="stress-section">
-        <button type="button" class="stress-toggle-btn" onclick="toggleStressGame()">Hladný a frustrovaný? Rozbi menu, ktoré ti nechutilo a zdieľaj fotku!</button>
+        <button type="button" class="stress-toggle-btn" onclick="toggleStressGame()">Hladny a frustrovany? Rozbi stranku!</button>
     </div>
     <div id="stress-overlay" class="stress-overlay" style="display:none;">
         <div class="stress-toolbar">
-            <button class="tool-btn active" data-tool="hammer" onclick="selectTool('hammer')">Kladivo</button>
-            <button class="tool-btn" data-tool="fire" onclick="selectTool('fire')">Plamenomet</button>
-            <button class="tool-btn" data-tool="paint" onclick="selectTool('paint')">Farba</button>
-            <button class="tool-btn" data-tool="lightning" onclick="selectTool('lightning')">Blesk</button>
-            <button class="tool-btn" data-tool="chainsaw" onclick="selectTool('chainsaw')">Pila</button>
-            <button class="tool-btn" data-tool="eraser" onclick="selectTool('eraser')">Guma</button>
-            <button class="tool-btn tool-btn-close" onclick="toggleStressGame()">Ukončiť</button>
+            <button class="tool-btn active" data-tool="hammer" onclick="selectTool('hammer')" title="Kladivo"><span class="tool-icon">🔨</span></button>
+            <button class="tool-btn" data-tool="fire" onclick="selectTool('fire')" title="Plamenomet"><span class="tool-icon">🔥</span></button>
+            <button class="tool-btn" data-tool="paint" onclick="selectTool('paint')" title="Farba"><span class="tool-icon">🎨</span></button>
+            <button class="tool-btn" data-tool="lightning" onclick="selectTool('lightning')" title="Blesk"><span class="tool-icon">⚡</span></button>
+            <button class="tool-btn" data-tool="chainsaw" onclick="selectTool('chainsaw')" title="Pila"><span class="tool-icon">🪚</span></button>
+            <button class="tool-btn" data-tool="eraser" onclick="selectTool('eraser')" title="Guma"><span class="tool-icon">🧽</span></button>
+            <button class="tool-btn tool-btn-close" onclick="toggleStressGame()" title="Ukoncit"><span class="tool-icon">✖️</span></button>
         </div>
         <canvas id="stress-canvas"></canvas>
     </div>
