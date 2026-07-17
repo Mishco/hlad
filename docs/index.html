@@ -68,16 +68,37 @@
 
     <div id="menus-container"></div>
 
+    <!-- Stress Relief Game -->
+    <div class="stress-section">
+        <button type="button" class="stress-toggle-btn" onclick="toggleStressGame()">Hladny a frustrovaný? Znic nieco!</button>
+    </div>
+    <div id="stress-game" class="stress-game" style="display:none;">
+        <div class="stress-header">
+            <h3>Stress Relief - Znic si desktop!</h3>
+            <button type="button" class="stats-close" onclick="toggleStressGame()">&times;</button>
+        </div>
+        <div class="stress-tools">
+            <button class="tool-btn active" data-tool="hammer" onclick="selectTool('hammer')">Kladivo</button>
+            <button class="tool-btn" data-tool="fire" onclick="selectTool('fire')">Plamenomet</button>
+            <button class="tool-btn" data-tool="paint" onclick="selectTool('paint')">Farba</button>
+            <button class="tool-btn" data-tool="lightning" onclick="selectTool('lightning')">Blesk</button>
+            <button class="tool-btn" data-tool="eraser" onclick="selectTool('eraser')">Guma</button>
+        </div>
+        <canvas id="stress-canvas" width="800" height="400"></canvas>
+        <p class="stress-hint">Klikaj a tahaj po platne! Vybi si nastroj a zbav sa frustrácie.</p>
+    </div>
+
     <footer class="page-footer">
         <p>Data su ziskavane z
-            <a href="https://restauracie.sme.sk" target="_blank">restauracie.sme.sk</a>,
+            <a href="https://www.popradskaplzenka.sk" target="_blank">popradskaplzenka.sk</a>,
             <a href="https://forumpoprad.sk" target="_blank">forumpoprad.sk</a>,
             <a href="https://menucka.sk" target="_blank">menucka.sk</a>,
             <a href="https://aquacity.sk" target="_blank">aquacity.sk</a>,
             <a href="https://www.angrychef.sk" target="_blank">angrychef.sk</a>,
             <a href="https://mamutpoprad.sk" target="_blank">mamutpoprad.sk</a>,
-            <a href="https://www.phoking.sk" target="_blank">phoking.sk</a> a
-            <a href="https://wolt.com" target="_blank">wolt.com</a>.</p>
+            <a href="https://www.phoking.sk" target="_blank">phoking.sk</a>,
+            <a href="https://wolt.com" target="_blank">wolt.com</a> a
+            <a href="https://veg.sk" target="_blank">veg.sk</a>.</p>
         <p id="generated-at">Posledna aktualizacia: --</p>
         <p>DNS by <a href="https://freedns.afraid.org/" target="_blank">Free DNS</a></p>
     </footer>
@@ -340,6 +361,139 @@ function clearStats() {
 
 function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 function escAttr(s) { return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"'); }
+
+// ===== STRESS RELIEF GAME =====
+let stressCanvas, stressCtx, currentTool = 'hammer', isDrawing = false;
+
+function toggleStressGame() {
+    const panel = document.getElementById('stress-game');
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    if (panel.style.display === 'block') initStressCanvas();
+}
+
+function selectTool(tool) {
+    currentTool = tool;
+    document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`[data-tool="${tool}"]`).classList.add('active');
+    const canvas = document.getElementById('stress-canvas');
+    const cursors = { hammer: 'crosshair', fire: 'pointer', paint: 'cell', lightning: 'default', eraser: 'grab' };
+    canvas.style.cursor = cursors[tool] || 'crosshair';
+}
+
+function initStressCanvas() {
+    stressCanvas = document.getElementById('stress-canvas');
+    stressCtx = stressCanvas.getContext('2d');
+    stressCanvas.width = stressCanvas.offsetWidth;
+    stressCanvas.height = 400;
+    // Draw a fake "desktop" background
+    stressCtx.fillStyle = '#1a1a2e';
+    stressCtx.fillRect(0, 0, stressCanvas.width, stressCanvas.height);
+    // Draw some fake windows
+    drawFakeWindow(30, 30, 200, 150, 'Windows Update', 'Restarting in 5 min...');
+    drawFakeWindow(260, 60, 220, 130, 'Error', 'Something went wrong :(');
+    drawFakeWindow(100, 200, 250, 140, 'Loading...', 'Please wait forever...');
+    drawFakeWindow(400, 180, 200, 130, '404', 'Obed not found');
+    if (stressCanvas.width > 500) drawFakeWindow(500, 30, 180, 120, 'WiFi', 'No connection');
+
+    stressCanvas.onmousedown = (e) => { isDrawing = true; applyTool(e); };
+    stressCanvas.onmousemove = (e) => { if (isDrawing) applyTool(e); };
+    stressCanvas.onmouseup = () => isDrawing = false;
+    stressCanvas.onmouseleave = () => isDrawing = false;
+    stressCanvas.ontouchstart = (e) => { isDrawing = true; applyTool(e.touches[0]); e.preventDefault(); };
+    stressCanvas.ontouchmove = (e) => { if (isDrawing) applyTool(e.touches[0]); e.preventDefault(); };
+    stressCanvas.ontouchend = () => isDrawing = false;
+}
+
+function drawFakeWindow(x, y, w, h, title, content) {
+    stressCtx.fillStyle = '#2d2d44';
+    stressCtx.fillRect(x, y, w, h);
+    stressCtx.fillStyle = '#4a4a6a';
+    stressCtx.fillRect(x, y, w, 25);
+    stressCtx.fillStyle = '#fff';
+    stressCtx.font = '12px monospace';
+    stressCtx.fillText(title, x + 8, y + 17);
+    stressCtx.fillStyle = '#e74c3c';
+    stressCtx.fillText('X', x + w - 15, y + 17);
+    stressCtx.fillStyle = '#aaa';
+    stressCtx.font = '13px sans-serif';
+    stressCtx.fillText(content, x + 15, y + 55);
+}
+
+function applyTool(e) {
+    const rect = stressCanvas.getBoundingClientRect();
+    const x = (e.clientX || e.pageX) - rect.left;
+    const y = (e.clientY || e.pageY) - rect.top;
+
+    switch (currentTool) {
+        case 'hammer':
+            // Cracks
+            for (let i = 0; i < 5; i++) {
+                stressCtx.beginPath();
+                stressCtx.moveTo(x, y);
+                stressCtx.lineTo(x + (Math.random() - 0.5) * 80, y + (Math.random() - 0.5) * 80);
+                stressCtx.strokeStyle = `rgba(255,255,255,${Math.random() * 0.8 + 0.2})`;
+                stressCtx.lineWidth = Math.random() * 3 + 1;
+                stressCtx.stroke();
+            }
+            // Impact circle
+            stressCtx.beginPath();
+            stressCtx.arc(x, y, 5, 0, Math.PI * 2);
+            stressCtx.fillStyle = 'rgba(255,255,255,0.8)';
+            stressCtx.fill();
+            break;
+
+        case 'fire':
+            // Flame particles
+            for (let i = 0; i < 8; i++) {
+                const fx = x + (Math.random() - 0.5) * 30;
+                const fy = y + (Math.random() - 0.5) * 30;
+                const r = Math.random() * 15 + 5;
+                const grad = stressCtx.createRadialGradient(fx, fy, 0, fx, fy, r);
+                grad.addColorStop(0, `rgba(255,${Math.floor(Math.random()*150+100)},0,0.9)`);
+                grad.addColorStop(0.5, `rgba(255,${Math.floor(Math.random()*80)},0,0.5)`);
+                grad.addColorStop(1, 'rgba(0,0,0,0)');
+                stressCtx.fillStyle = grad;
+                stressCtx.fillRect(fx - r, fy - r, r * 2, r * 2);
+            }
+            break;
+
+        case 'paint':
+            // Color splatter
+            for (let i = 0; i < 6; i++) {
+                stressCtx.beginPath();
+                const px = x + (Math.random() - 0.5) * 40;
+                const py = y + (Math.random() - 0.5) * 40;
+                stressCtx.arc(px, py, Math.random() * 12 + 3, 0, Math.PI * 2);
+                stressCtx.fillStyle = `hsl(${Math.random()*360}, 80%, 55%)`;
+                stressCtx.fill();
+            }
+            break;
+
+        case 'lightning':
+            // Lightning bolt
+            stressCtx.beginPath();
+            stressCtx.moveTo(x, 0);
+            let lx = x, ly = 0;
+            while (ly < y) {
+                lx += (Math.random() - 0.5) * 30;
+                ly += Math.random() * 30 + 10;
+                stressCtx.lineTo(lx, Math.min(ly, y));
+            }
+            stressCtx.strokeStyle = `rgba(150,200,255,${Math.random()*0.5+0.5})`;
+            stressCtx.lineWidth = Math.random() * 3 + 1;
+            stressCtx.stroke();
+            // Flash
+            stressCtx.fillStyle = 'rgba(200,220,255,0.1)';
+            stressCtx.fillRect(0, 0, stressCanvas.width, stressCanvas.height);
+            break;
+
+        case 'eraser':
+            stressCtx.clearRect(x - 20, y - 20, 40, 40);
+            stressCtx.fillStyle = '#1a1a2e';
+            stressCtx.fillRect(x - 20, y - 20, 40, 40);
+            break;
+    }
+}
 
 // Init
 init();

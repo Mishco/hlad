@@ -753,3 +753,100 @@ body {
         color: black;
     }
 }
+
+/* ===== STRESS RELIEF GAME ===== */
+.stress-section {
+    text-align: center;
+    margin: 32px 0 16px;
+}
+
+.stress-toggle-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.stress-toggle-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+}
+
+.stress-game {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 16px 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.stress-game .stress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.stress-game .stress-header h3 {
+    color: #e74c3c;
+    font-size: 1.1rem;
+}
+
+.stress-tools {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.tool-btn {
+    background: #2d2d44;
+    color: #ccc;
+    border: 2px solid #3d3d5c;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.tool-btn:hover {
+    background: #3d3d5c;
+    color: white;
+}
+
+.tool-btn.active {
+    background: #e74c3c;
+    border-color: #e74c3c;
+    color: white;
+    box-shadow: 0 2px 10px rgba(231,76,60,0.4);
+}
+
+#stress-canvas {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    border: 2px solid #3d3d5c;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.stress-hint {
+    color: #666;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .stress-toggle-btn {
+        box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
+    }
+}
