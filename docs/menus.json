@@ -158,7 +158,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:33"
     },
     {
       "restaurantId": 1,
@@ -196,7 +196,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:33"
     },
     {
       "restaurantId": 1,
@@ -234,7 +234,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:33"
     },
     {
       "restaurantId": 1,
@@ -272,7 +272,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:33"
     },
     {
       "restaurantId": 1,
@@ -310,7 +310,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:33"
     },
     {
       "restaurantId": 2,
@@ -336,7 +336,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:33"
     },
     {
       "restaurantId": 2,
@@ -362,7 +362,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:33"
     },
     {
       "restaurantId": 2,
@@ -388,7 +388,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:33"
     },
     {
       "restaurantId": 2,
@@ -414,7 +414,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:33"
     },
     {
       "restaurantId": 2,
@@ -440,7 +440,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:33"
     },
     {
       "restaurantId": 3,
@@ -496,7 +496,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 3,
@@ -552,7 +552,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 3,
@@ -608,7 +608,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 3,
@@ -664,7 +664,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 3,
@@ -720,7 +720,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 4,
@@ -755,7 +755,7 @@
           "name": "Mie\u0161an\u00FD \u0161al\u00E1t s mini Mozzarellov\u00FDmi guli\u010Dkami, medovo hor\u010Dicov\u00FD dresing, toust",
           "price": 6.90,
           "description": "(1,7,10) 150g",
-          "isVegetarian": true
+          "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148 s petr\u017Elenov\u00FDmi zemiakmi, kysl\u00E1 uhorka",
@@ -764,7 +764,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 4,
@@ -799,7 +799,7 @@
           "name": "Mie\u0161an\u00FD \u0161al\u00E1t s mini Mozzarellov\u00FDmi guli\u010Dkami, medovo hor\u010Dicov\u00FD dresing, toust",
           "price": 6.90,
           "description": "(1,7,10) 150g",
-          "isVegetarian": true
+          "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148 s petr\u017Elenov\u00FDmi zemiakmi, kysl\u00E1 uhorka",
@@ -808,7 +808,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 4,
@@ -843,7 +843,7 @@
           "name": "Mie\u0161an\u00FD \u0161al\u00E1t s mini Mozzarellov\u00FDmi guli\u010Dkami, medovo hor\u010Dicov\u00FD dresing, toust",
           "price": 6.90,
           "description": "(1,7,10) 150g",
-          "isVegetarian": true
+          "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148 s petr\u017Elenov\u00FDmi zemiakmi, kysl\u00E1 uhorka",
@@ -852,7 +852,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 4,
@@ -887,7 +887,7 @@
           "name": "Mie\u0161an\u00FD \u0161al\u00E1t s mini Mozzarellov\u00FDmi guli\u010Dkami, medovo hor\u010Dicov\u00FD dresing, toust",
           "price": 6.90,
           "description": "(1,7,10) 150g",
-          "isVegetarian": true
+          "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148 s petr\u017Elenov\u00FDmi zemiakmi, kysl\u00E1 uhorka",
@@ -896,7 +896,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 4,
@@ -912,13 +912,13 @@
         {
           "name": "Marinovan\u00E1 krkovi\u010Dka na cibu\u013Eovej om\u00E1\u010Dke s opekan\u00FDmi zemiakmi, \u010Dalam\u00E1da",
           "price": 6.90,
-          "description": "(10) 240g",
+          "description": "(10) 130g",
           "isVegetarian": false
         },
         {
           "name": "\u0160pen\u00E1tov\u00E9 halu\u0161ky so syrovou om\u00E1\u010Dkou a Parmez\u00E1nov\u00FDmi hoblinami",
           "price": 6.90,
-          "description": "130g",
+          "description": "400g",
           "isVegetarian": true
         },
         {
@@ -931,7 +931,7 @@
           "name": "Mie\u0161an\u00FD \u0161al\u00E1t s mini Mozzarellov\u00FDmi guli\u010Dkami, medovo hor\u010Dicov\u00FD dresing, toust",
           "price": 6.90,
           "description": "(1,7,10) 150g",
-          "isVegetarian": true
+          "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148 s petr\u017Elenov\u00FDmi zemiakmi, kysl\u00E1 uhorka",
@@ -940,7 +940,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 5,
@@ -1020,7 +1020,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 5,
@@ -1100,7 +1100,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 5,
@@ -1180,7 +1180,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 5,
@@ -1260,7 +1260,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 5,
@@ -1340,7 +1340,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 6,
@@ -1372,7 +1372,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 6,
@@ -1404,7 +1404,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 6,
@@ -1436,7 +1436,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 6,
@@ -1468,7 +1468,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 6,
@@ -1500,7 +1500,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:23"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 7,
@@ -1556,7 +1556,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 7,
@@ -1612,7 +1612,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 7,
@@ -1668,7 +1668,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 7,
@@ -1724,7 +1724,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 7,
@@ -1780,7 +1780,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 8,
@@ -1836,197 +1836,179 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 8,
       "date": "2026-07-21",
-      "soupOfTheDay": null,
+      "soupOfTheDay": "Tom kha gai (330ml) (6,7) - 6,00 \u20AC",
       "items": [
         {
-          "name": "Ry\u017Eov\u00E9 rezance s kurac\u00EDm m\u00E4som",
+          "name": "Pad Thai s kurac\u00EDm m\u00E4som",
+          "price": 12.00,
+          "description": "(2,3,5,6)",
+          "isVegetarian": false
+        },
+        {
+          "name": "Pad Thai s krevetami",
+          "price": 12.00,
+          "description": "(2,3,5,6)",
+          "isVegetarian": false
+        },
+        {
+          "name": "Kungpao s kurac\u00EDm m\u00E4som a ry\u017Eou",
           "price": 11.50,
-          "description": null,
+          "description": "(5,6)",
           "isVegetarian": false
         },
         {
-          "name": "Ry\u017Eov\u00E9 rezance s hov\u00E4dz\u00EDm m\u00E4som",
+          "name": "Chrumkav\u00E1 ka\u010Dica s ara\u0161idovou om\u00E1\u010Dkou a zeleninou",
+          "price": 12.00,
+          "description": "(5,7,11)",
+          "isVegetarian": false
+        },
+        {
+          "name": "Kuracie sot\u00E9 so zeleninou, jasm\u00EDnov\u00E1 ry\u017Ea",
           "price": 11.50,
+          "description": "(11)",
+          "isVegetarian": false
+        },
+        {
+          "name": "Sushi: Sake roll (8ks), Maki sake (4ks), Maki ebi (4ks)",
+          "price": 14.00,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Ry\u017Eov\u00E9 rezance s krevetami",
+          "name": "Sushi: Vegeta roll (8ks), Maki avok\u00E1do (4ks), Maki Kappa (4ks)",
           "price": 12.00,
           "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Kuracie prsia tempura s rezancami a sweet chilli",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Bun B\u00F3 Nam Bo",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Kuracie sot\u00E9 sweet chilli, jasm\u00EDnov\u00E1 ry\u017Ea",
-          "price": 13.50,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Sushi: Alaska roll (8ks), Maki Oshinko (4ks), Maki Tamago (4ks)",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Sushi: Vegeta roll (8ks), Maki avok\u00E1do (4ks), Maki Kappa\u002BOshinko (4ks)",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 8,
       "date": "2026-07-22",
-      "soupOfTheDay": null,
+      "soupOfTheDay": "Miso polievka (330ml) (6) - 6,00 \u20AC",
       "items": [
         {
-          "name": "Ry\u017Eov\u00E9 rezance s kurac\u00EDm m\u00E4som",
+          "name": "Thajsk\u00E9 kari s kurac\u00EDm m\u00E4som a ry\u017Eou",
           "price": 11.50,
-          "description": null,
+          "description": "(7)",
           "isVegetarian": false
         },
         {
-          "name": "Ry\u017Eov\u00E9 rezance s hov\u00E4dz\u00EDm m\u00E4som",
+          "name": "Thajsk\u00E9 kari s krevetami a ry\u017Eou",
+          "price": 12.00,
+          "description": "(7)",
+          "isVegetarian": false
+        },
+        {
+          "name": "B\u00FAn ch\u1EA3 h\u00E0 n\u00F4i",
+          "price": 12.00,
+          "description": "grilovan\u00E9 brav\u010Dov\u00E9, ry\u017Eov\u00E9 rezance, \u0161al\u00E1t",
+          "isVegetarian": false
+        },
+        {
+          "name": "Opekan\u00E1 ry\u017Ea s kurac\u00EDm m\u00E4som a zeleninou",
           "price": 11.50,
+          "description": "(1,3)",
+          "isVegetarian": false
+        },
+        {
+          "name": "Udon s hov\u00E4dz\u00EDm m\u00E4som a zeleninou",
+          "price": 12.00,
+          "description": "(1,3)",
+          "isVegetarian": false
+        },
+        {
+          "name": "Sushi: Maguro roll (8ks), Maki sake (4ks), Maki oshinko (4ks)",
+          "price": 14.50,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Ry\u017Eov\u00E9 rezance s krevetami",
+          "name": "Sushi: Vegeta roll (8ks), Maki avok\u00E1do (4ks), Maki Kappa (4ks)",
           "price": 12.00,
           "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Kuracie prsia tempura s rezancami a sweet chilli",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Bun B\u00F3 Nam Bo",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Kuracie sot\u00E9 sweet chilli, jasm\u00EDnov\u00E1 ry\u017Ea",
-          "price": 13.50,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Sushi: Alaska roll (8ks), Maki Oshinko (4ks), Maki Tamago (4ks)",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Sushi: Vegeta roll (8ks), Maki avok\u00E1do (4ks), Maki Kappa\u002BOshinko (4ks)",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 8,
       "date": "2026-07-23",
-      "soupOfTheDay": null,
+      "soupOfTheDay": "Ostrokysl\u00E1 polievka (330ml) (3,6) - 4,50 \u20AC",
       "items": [
         {
-          "name": "Ry\u017Eov\u00E9 rezance s kurac\u00EDm m\u00E4som",
-          "price": 11.50,
+          "name": "Sklenen\u00E9 rezance s kurac\u00EDm m\u00E4som a zeleninou",
+          "price": 12.50,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Ry\u017Eov\u00E9 rezance s hov\u00E4dz\u00EDm m\u00E4som",
-          "price": 11.50,
+          "name": "Sklenen\u00E9 rezance s krevetami a zeleninou",
+          "price": 12.50,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Ry\u017Eov\u00E9 rezance s krevetami",
+          "name": "Chrumkav\u00E9 kuracie s ara\u0161idovou om\u00E1\u010Dkou a zeleninou",
+          "price": 11.00,
+          "description": "(5,7,11)",
+          "isVegetarian": false
+        },
+        {
+          "name": "B\u00FAn nem (jarn\u00E9 rolky s rezancami a \u0161al\u00E1tom)",
           "price": 12.00,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Kuracie prsia tempura s rezancami a sweet chilli",
-          "price": 12.00,
+          "name": "Opekan\u00E1 ry\u017Ea s anan\u00E1som a ke\u0161u orie\u0161kami",
+          "price": 12.50,
+          "description": "(1,3,8)",
+          "isVegetarian": false
+        },
+        {
+          "name": "Sushi: Saro roll (8ks), Maki sake (4ks), Maki ebi (4ks)",
+          "price": 14.00,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Bun B\u00F3 Nam Bo",
+          "name": "Sushi: Vegeta roll (8ks), Maki avok\u00E1do (4ks), Maki oshinko (4ks)",
           "price": 12.00,
           "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Kuracie sot\u00E9 sweet chilli, jasm\u00EDnov\u00E1 ry\u017Ea",
-          "price": 13.50,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Sushi: Alaska roll (8ks), Maki Oshinko (4ks), Maki Tamago (4ks)",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Sushi: Vegeta roll (8ks), Maki avok\u00E1do (4ks), Maki Kappa\u002BOshinko (4ks)",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 8,
       "date": "2026-07-24",
-      "soupOfTheDay": null,
+      "soupOfTheDay": "Hanoi v\u00FDvar (330ml) - 6,00 \u20AC",
       "items": [
         {
-          "name": "Ry\u017Eov\u00E9 rezance s kurac\u00EDm m\u00E4som",
+          "name": "\u010C\u00EDnske rezance s hov\u00E4dz\u00EDm m\u00E4som a zeleninou",
           "price": 11.50,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Ry\u017Eov\u00E9 rezance s hov\u00E4dz\u00EDm m\u00E4som",
+          "name": "\u010C\u00EDnske rezance s krevetami a zeleninou",
           "price": 11.50,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Ry\u017Eov\u00E9 rezance s krevetami",
-          "price": 12.00,
-          "description": null,
+          "name": "Bun B\u00F3 Nam Bo",
+          "price": 13.50,
+          "description": "hov\u00E4dzie, citr\u00F3nov\u00E1 tr\u00E1va, cesnak, rezance, \u0161al\u00E1t",
           "isVegetarian": false
         },
         {
@@ -2036,31 +2018,25 @@
           "isVegetarian": false
         },
         {
-          "name": "Bun B\u00F3 Nam Bo",
-          "price": 12.00,
+          "name": "Opekan\u00E1 ry\u017Ea s kurac\u00EDm m\u00E4som a zeleninou",
+          "price": 11.50,
+          "description": "(1,3)",
+          "isVegetarian": false
+        },
+        {
+          "name": "Sushi: Alaska roll (8ks), Maki maguro (4ks), Maki sake (4ks)",
+          "price": 14.50,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Kuracie sot\u00E9 sweet chilli, jasm\u00EDnov\u00E1 ry\u017Ea",
-          "price": 13.50,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Sushi: Alaska roll (8ks), Maki Oshinko (4ks), Maki Tamago (4ks)",
+          "name": "Sushi: Vegeta roll (8ks), Maki avok\u00E1do (4ks), Maki Kappa (4ks)",
           "price": 12.00,
           "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Sushi: Vegeta roll (8ks), Maki avok\u00E1do (4ks), Maki Kappa\u002BOshinko (4ks)",
-          "price": 12.00,
-          "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 9,
@@ -2080,7 +2056,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 9,
@@ -2112,7 +2088,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 9,
@@ -2144,7 +2120,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 9,
@@ -2161,7 +2137,7 @@
           "name": "Dum Aloo / sma\u017Een\u00E9 zemia\u010Dky v ind. om\u00E1\u010Dke, basmati ry\u017Ea",
           "price": 7.90,
           "description": "380g, Alerg\u00E9ny: 8",
-          "isVegetarian": true
+          "isVegetarian": false
         },
         {
           "name": "Cviklov\u00E9 krupoto, mozarellov\u00E9 gu\u013Eky",
@@ -2176,7 +2152,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     },
     {
       "restaurantId": 9,
@@ -2208,8 +2184,8 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "08:24"
+      "lastUpdated": "12:34"
     }
   ],
-  "generatedAt": "2026-07-20 08:24:19"
+  "generatedAt": "2026-07-20 12:34:34"
 }
