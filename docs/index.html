@@ -205,6 +205,11 @@ function renderMenus() {
         html += '</div>';
 
         if (menu) {
+            if (menu.items.length === 0) {
+                // Restaurant is closed or has a notice (no menu items)
+                const notice = menu.soupOfTheDay || 'Dnes bez denného menu.';
+                html += '<p class="no-menu notice-menu">' + esc(notice) + '</p>';
+            } else {
             if (menu.soupOfTheDay) {
                 html += '<div class="soup"><strong>Polievka:</strong> ' + esc(menu.soupOfTheDay) + '</div>';
             }
@@ -221,6 +226,7 @@ function renderMenus() {
                 html += '</tr>';
             }
             html += '</tbody></table>';
+            }
             html += '<div class="menu-footer"><span class="last-updated">Aktualizovane: ' + esc(menu.lastUpdated) + '</span></div>';
         } else {
             html += '<p class="no-menu">Menu na tento deň nie je k dispozicii.</p>';

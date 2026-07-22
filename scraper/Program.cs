@@ -211,6 +211,7 @@ Rules:
 - Remove numbering prefixes like ""1."", ""2."" from dish names
 - Price should be a decimal number (e.g. 7.90), use 0 if not listed
 - If the page has no daily menu data (e.g. it's a permanent menu or just info), return {{""days"": []}}
+- If a specific day says the restaurant is closed or not serving menu (e.g. ""nepodávame"", ""zatvorené""), include that day with empty items array and set soup to the notice text
 - Keep dish names in original Slovak language
 - For soup, extract just the name without price/allergens
 - description field: include allergens like ""(1,3,7)"" or weight like ""150g"" if available, null otherwise
@@ -334,7 +335,7 @@ PAGE TEXT:
                     items.Add(new MenuItem(name, price, desc, isVeg));
             }
 
-            if (items.Count > 0)
+            if (items.Count > 0 || !string.IsNullOrEmpty(soup))
                 menus.Add(new DailyMenu(restaurantId, date, soup, items, DateTime.Now.ToString("HH:mm")));
         }
 
@@ -419,6 +420,16 @@ PAGE TEXT:
             }
 
             current = current.NextSibling;
+        }
+
+        // Detect "no menu today" notices (e.g. "nepodávame", "neponúkame")
+        if (items.Count == 0 && soup != null &&
+            (soup.Contains("nepodávame", StringComparison.OrdinalIgnoreCase) ||
+             soup.Contains("neponúkame", StringComparison.OrdinalIgnoreCase) ||
+             soup.Contains("zatvorené", StringComparison.OrdinalIgnoreCase) ||
+             soup.Contains("technických príčin", StringComparison.OrdinalIgnoreCase)))
+        {
+            return new DailyMenu(restaurantId, DateOnly.FromDateTime(targetDate).ToString("yyyy-MM-dd"), soup, new List<MenuItem>(), DateTime.Now.ToString("HH:mm"));
         }
 
         if (items.Count == 0) return null;
