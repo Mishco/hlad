@@ -221,7 +221,7 @@ function renderMenus() {
                 if (item.isVegetarian) html += ' <span class="veg-badge" title="Vegetarianske">&#x1F331;</span>';
                 html += '</td>';
                 html += '<td>' + (item.description ? esc(item.description) : '—') + '</td>';
-                html += '<td class="price">' + item.price.toFixed(2) + ' &euro;</td>';
+                html += '<td class="price">' + (item.price > 0 ? item.price.toFixed(2) + ' &euro;' : '—') + '</td>';
                 html += '<td><button class="damsi-btn" onclick="damSi(this,\'' + escAttr(r.name) + '\',\'' + escAttr(item.name) + '\',' + item.price + ')">Dám si!</button></td>';
                 html += '</tr>';
             }

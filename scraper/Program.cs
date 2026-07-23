@@ -209,7 +209,7 @@ Return ONLY valid JSON (no markdown, no explanation) in this exact format:
 Rules:
 - Include all days Monday to Friday that have menu data
 - Remove numbering prefixes like ""1."", ""2."" from dish names
-- Price should be a decimal number (e.g. 7.90), use 0 if not listed
+- Price should be a decimal number (e.g. 7.90). If the page states a default menu price (e.g. ""Polievka + hlavné jedlo = 8,90€""), use that default for items without explicit prices. Only use 0 if truly unknown.
 - If the page has no daily menu data (e.g. it's a permanent menu or just info), return {{""days"": []}}
 - If a specific day says the restaurant is closed or not serving menu (e.g. ""nepodávame"", ""zatvorené""), include that day with empty items array and set soup to the notice text
 - Keep dish names in original Slovak language
@@ -572,8 +572,8 @@ PAGE TEXT:
                 foreach (var li in lis)
                 {
                     var itemText = HtmlEntity.DeEntitize(li.InnerText).Trim();
-                    var priceMatch = Regex.Match(itemText, @"\((\d+[.,]\d+)€\)\s*$");
-                    decimal price = 8.90m;
+                    var priceMatch = Regex.Match(itemText, @"\((\d+[.,]\d+)\s*€\)\s*$");
+                    decimal price = 8.90m; // default menu price
                     if (priceMatch.Success)
                     {
                         decimal.TryParse(priceMatch.Groups[1].Value.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out price);
