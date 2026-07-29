@@ -129,36 +129,36 @@
       "items": [
         {
           "name": "Holandsk\u00FD mlet\u00FD reze\u0148, \u0161ampi\u0148onovo - smotanov\u00E1 om\u00E1\u010Dka, \u0161tuchan\u00E9 zemiaky",
-          "price": 8.1,
+          "price": 8.10,
           "description": "150g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Kurac\u00ED steak na syrovo \u0161pen\u00E1tov\u00FDch halu\u0161k\u00E1ch",
-          "price": 8.1,
+          "price": 8.10,
           "description": "150g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "\u0160pagety Aglio olio e peperoncino s parmez\u00E1nom",
-          "price": 7.8,
+          "price": 7.80,
           "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Listov\u00FD \u0161al\u00E1t s olivami, cherry paradajkami, grilovan\u00FDm hermel\u00EDnom, vinaigrette, bagetka",
-          "price": 9.1,
+          "price": 9.10,
           "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148, zemiakov\u00FD \u0161al\u00E1t s majon\u00E9zou",
-          "price": 8.1,
+          "price": 8.10,
           "description": "150g (1,3,7,10)",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 1,
@@ -167,36 +167,36 @@
       "items": [
         {
           "name": "Hov\u00E4dzia svie\u010Dkov\u00E1 na smotane, kysnut\u00E1 kned\u013Ea",
-          "price": 9.1,
+          "price": 9.10,
           "description": "150g (1,3,7,9,10)",
           "isVegetarian": false
         },
         {
           "name": "Zemiakov\u00E9 knedle plnen\u00E9 \u00FAden\u00FDm m\u00E4som s dusenou kyslou kapustou a ope\u010Denou slaninkou",
-          "price": 8.1,
+          "price": 8.10,
           "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "\u0160o\u0161ovicov\u00FD pr\u00EDvarok s pe\u010Denou \u0161pek\u00E1\u010Dkou a volsk\u00FDch okom, chlieb",
-          "price": 7.8,
+          "price": 7.80,
           "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Listov\u00FD \u0161al\u00E1t s kurac\u00EDm m\u00E4som, Caesar dresing, Bagetka",
-          "price": 9.1,
+          "price": 9.10,
           "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148, zemiakov\u00FD \u0161al\u00E1t s majon\u00E9zou",
-          "price": 8.1,
+          "price": 8.10,
           "description": "150g (1,3,7,10)",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 1,
@@ -205,36 +205,36 @@
       "items": [
         {
           "name": "Dusen\u00E9 brav\u010Dov\u00E9 na kore\u0148ovej zelenine a \u010Dervenom v\u00EDne, pe\u010Den\u00E9 zemiaky",
-          "price": 8.1,
+          "price": 8.10,
           "description": "150g (9)",
           "isVegetarian": false
         },
         {
           "name": "Mor\u010Dac\u00ED obr\u00E1ten\u00FD reze\u0148, hor\u010Dicov\u00E1 om\u00E1\u010Dka, ry\u017Ea",
-          "price": 9.1,
+          "price": 9.10,
           "description": "150g (1,3,7,10)",
           "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD syr, varen\u00E9 zemiaky, dom\u00E1ca tat\u00E1rska om\u00E1\u010Dka",
-          "price": 7.8,
+          "price": 7.80,
           "description": "150g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Listov\u00FD \u0161al\u00E1t s olivami, cherry paradajkami, grilovan\u00FDm hermel\u00EDnom, vinaigrette, bagetka",
-          "price": 9.1,
+          "price": 9.10,
           "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148, zemiakov\u00FD \u0161al\u00E1t s majon\u00E9zou",
-          "price": 8.1,
+          "price": 8.10,
           "description": "150g (1,3,7,10)",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 1,
@@ -243,36 +243,36 @@
       "items": [
         {
           "name": "Hov\u00E4dz\u00ED ma\u010Farsk\u00FD gul\u00E1\u0161, dom\u00E1ca paren\u00E1 kned\u013Ea",
-          "price": 9.1,
+          "price": 9.10,
           "description": "150g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Kuracie plnen\u00E9 stehno so \u017Eem\u013Eovou plnkou, ry\u017Ea, kysl\u00E1 uhorka",
-          "price": 8.1,
+          "price": 8.10,
           "description": "220g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "\u0160pen\u00E1tov\u00E9 lasagne, smotanovo-bylinkov\u00E1 om\u00E1\u010Dka",
-          "price": 7.8,
+          "price": 7.80,
           "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Listov\u00FD \u0161al\u00E1t s kurac\u00EDm m\u00E4som, Caesar dresing, Bagetka",
-          "price": 9.1,
+          "price": 9.10,
           "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148, zemiakov\u00FD \u0161al\u00E1t s majon\u00E9zou",
-          "price": 8.1,
+          "price": 8.10,
           "description": "150g (1,3,7,10)",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 1,
@@ -281,36 +281,36 @@
       "items": [
         {
           "name": "Brav\u010Dov\u00FD \u010Dernohorsk\u00FD reze\u0148, str\u00FAhan\u00FD syr, zemiakov\u00E1 ka\u0161a, tatransk\u00FD \u0161al\u00E1t",
-          "price": 8.1,
+          "price": 8.10,
           "description": "150g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Plnen\u00E9 kuracie prsia s pr\u00EDrodnou bylinkovou om\u00E1\u010Dkou, ry\u017Ea",
-          "price": 8.1,
+          "price": 8.10,
           "description": "150g (7)",
           "isVegetarian": false
         },
         {
           "name": "Tvarohovo-jablkov\u00E1 \u017Eem\u013Eovka s ovocnou om\u00E1\u010Dkou",
-          "price": 7.8,
+          "price": 7.80,
           "description": "300g (1,3,7)",
-          "isVegetarian": true
+          "isVegetarian": false
         },
         {
           "name": "Listov\u00FD \u0161al\u00E1t s olivami, cherry paradajkami, grilovan\u00FDm hermel\u00EDnom, vinaigrette, bagetka",
-          "price": 9.1,
+          "price": 9.10,
           "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148, zemiakov\u00FD \u0161al\u00E1t s majon\u00E9zou",
-          "price": 8.1,
+          "price": 8.10,
           "description": "150g (1,3,7,10)",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 2,
@@ -336,7 +336,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 2,
@@ -362,7 +362,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 2,
@@ -388,7 +388,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 2,
@@ -414,7 +414,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 2,
@@ -440,7 +440,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 3,
@@ -457,7 +457,7 @@
           "name": "Rizoto so su\u0161enou paradajkou, cuketou, parmez\u00E1n",
           "price": 8.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Brav\u010Dov\u00FD steak na zeleninovej om\u00E1\u010Dke, parisienky s maslom a petr\u017Elenovou v\u0148a\u0165kou",
@@ -469,13 +469,13 @@
           "name": "\u0160al\u00E1t s grilovan\u00FDm hermel\u00EDnom (\u013Eadov\u00FD \u0161al\u00E1t, mango, gran\u00E1tov\u00E9 jadierka, hor\u010Dicovo-medov\u00FD dip)",
           "price": 9.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD pastiersky syr, zemiakov\u00E9 hranolky, tat\u00E1rska om\u00E1\u010Dka",
           "price": 10.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Classic burger s hranolkami a tat\u00E1rskou om\u00E1\u010Dkou",
@@ -496,7 +496,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 3,
@@ -525,13 +525,13 @@
           "name": "\u0160al\u00E1t s grilovan\u00FDm hermel\u00EDnom (\u013Eadov\u00FD \u0161al\u00E1t, mango, gran\u00E1tov\u00E9 jadierka, hor\u010Dicovo-medov\u00FD dip)",
           "price": 9.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD pastiersky syr, zemiakov\u00E9 hranolky, tat\u00E1rska om\u00E1\u010Dka",
           "price": 10.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Classic burger s hranolkami a tat\u00E1rskou om\u00E1\u010Dkou",
@@ -552,7 +552,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 3,
@@ -581,13 +581,13 @@
           "name": "\u0160al\u00E1t s grilovan\u00FDm hermel\u00EDnom (\u013Eadov\u00FD \u0161al\u00E1t, mango, gran\u00E1tov\u00E9 jadierka, hor\u010Dicovo-medov\u00FD dip)",
           "price": 9.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD pastiersky syr, zemiakov\u00E9 hranolky, tat\u00E1rska om\u00E1\u010Dka",
           "price": 10.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Classic burger s hranolkami a tat\u00E1rskou om\u00E1\u010Dkou",
@@ -608,7 +608,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 3,
@@ -637,13 +637,13 @@
           "name": "\u0160al\u00E1t s grilovan\u00FDm hermel\u00EDnom (\u013Eadov\u00FD \u0161al\u00E1t, mango, gran\u00E1tov\u00E9 jadierka, hor\u010Dicovo-medov\u00FD dip)",
           "price": 9.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD pastiersky syr, zemiakov\u00E9 hranolky, tat\u00E1rska om\u00E1\u010Dka",
           "price": 10.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Classic burger s hranolkami a tat\u00E1rskou om\u00E1\u010Dkou",
@@ -664,7 +664,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 3,
@@ -693,13 +693,13 @@
           "name": "\u0160al\u00E1t s grilovan\u00FDm hermel\u00EDnom (\u013Eadov\u00FD \u0161al\u00E1t, mango, gran\u00E1tov\u00E9 jadierka, hor\u010Dicovo-medov\u00FD dip)",
           "price": 9.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD pastiersky syr, zemiakov\u00E9 hranolky, tat\u00E1rska om\u00E1\u010Dka",
           "price": 10.9,
           "description": null,
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Classic burger s hranolkami a tat\u00E1rskou om\u00E1\u010Dkou",
@@ -720,7 +720,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 4,
@@ -758,56 +758,50 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 4,
       "date": "2026-07-28",
-      "soupOfTheDay": "Bor\u0161\u010D",
+      "soupOfTheDay": "\u0160pen\u00E1tov\u00E1 mlie\u010Dna s vaj\u00ED\u010Dkom (1,3,7)",
       "items": [
         {
-          "name": "Fazu\u013Eovica s \u00FAden\u00FDm a klob\u00E1skou, chlieb",
-          "price": 4.9,
-          "description": "(1,7)",
+          "name": "Pe\u010Den\u00E9 kuracie stehno s dusenou ry\u017Eou a pr\u00EDrodnou \u0161\u0165avou, uhorkov\u00FD \u0161al\u00E1t",
+          "price": 6.90,
+          "description": "240g (1,3,7)",
           "isVegetarian": false
         },
         {
-          "name": "Brav\u010Dov\u00E1 panenka na pr\u00EDrodno s pe\u010Den\u00FDmi zemiakmi a dom\u00E1cou tat\u00E1rskou om\u00E1\u010Dkou",
-          "price": 7.9,
+          "name": "Bratislavsk\u00E9 \u0161pikovan\u00E9 brav\u010Dov\u00E9 stehno s kolienkami",
+          "price": 6.90,
+          "description": "130g (1,3,7,10)",
+          "isVegetarian": false
+        },
+        {
+          "name": "Mie\u0161an\u00FD \u0161al\u00E1t s kurac\u00EDm m\u00E4som a cesnakov\u00FDm dressingom, toust",
+          "price": 6.90,
+          "description": "300g (1,10)",
+          "isVegetarian": false
+        },
+        {
+          "name": "Vypr\u00E1\u017Ean\u00FD Enci\u00E1n s hranolkami a dom\u00E1cou tat\u00E1rskou om\u00E1\u010Dkou",
+          "price": 6.90,
+          "description": "110g (1,3,7,10)",
+          "isVegetarian": true
+        },
+        {
+          "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148 so zemiakmi a kyslou uhorkou",
+          "price": 7.50,
           "description": "150g (1,3,7,10)",
-          "isVegetarian": false
-        },
-        {
-          "name": "Restovan\u00E9 kuracie pe\u010Dienky s dusenou ry\u017Eou a kyslou uhorkou",
-          "price": 6.9,
-          "description": "300g (10)",
-          "isVegetarian": false
-        },
-        {
-          "name": "Mie\u0161an\u00FD \u0161al\u00E1t s trhan\u00FDm m\u00E4som, cesnakov\u00FD dressing, toust",
-          "price": 7.2,
-          "description": "(1,7)",
-          "isVegetarian": false
-        },
-        {
-          "name": "Mie\u0161an\u00FD zeleninov\u00FD \u0161al\u00E1t s Balk\u00E1nskym syrom, med. hor\u010Di. dres, toust",
-          "price": 6.9,
-          "description": "(1,7,10)",
-          "isVegetarian": false
-        },
-        {
-          "name": "Vypr\u00E1\u017Ean\u00FD kurac\u00ED reze\u0148 so zemiakmi a kyslou uhorkou",
-          "price": 7.5,
-          "description": "(1,3,7,10)",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 4,
       "date": "2026-07-29",
-      "soupOfTheDay": "Zeleninov\u00E1 s mrvencou",
+      "soupOfTheDay": "Zeleninov\u00E1 s mrvenicou",
       "items": [
         {
           "name": "Fazu\u013Eovica s \u00FAden\u00FDm a klob\u00E1skou, chlieb",
@@ -818,13 +812,13 @@
         {
           "name": "Pe\u010Den\u00E9 kuracie stehno plnen\u00E9 \u017Eem\u013Eovou plnkou s pe\u010Dienkami a slaninkou, dusenou ry\u017Eou a pr\u00EDrodnou \u0161\u0165avou, \u0161al\u00E1t",
           "price": 7.5,
-          "description": "(1,3,7)",
+          "description": "240g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Kelov\u00FD pr\u00EDvarok so zemiakmi, pe\u010Den\u00E1 klob\u00E1sa, vaj\u00ED\u010Dko, chlieb",
           "price": 6.9,
-          "description": "(1,3,7)",
+          "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
@@ -837,16 +831,16 @@
           "name": "Mie\u0161an\u00FD zeleninov\u00FD \u0161al\u00E1t s Balk\u00E1nskym syrom, med. hor\u010Di. dres, toust",
           "price": 6.9,
           "description": "(1,7,10)",
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD kurac\u00ED reze\u0148 so zemiakmi a kyslou uhorkou",
           "price": 7.5,
-          "description": "(1,3,7,10)",
+          "description": "300g (1,3,7,10)",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 4,
@@ -862,7 +856,7 @@
         {
           "name": "Po\u013Eovn\u00EDcky jelen\u00ED gu\u013E\u00E1\u0161 s parenou kned\u013Eou",
           "price": 7.9,
-          "description": "(1,3,7)",
+          "description": "300g (1,3,7)",
           "isVegetarian": false
         },
         {
@@ -881,16 +875,16 @@
           "name": "Mie\u0161an\u00FD zeleninov\u00FD \u0161al\u00E1t s Balk\u00E1nskym syrom, med. hor\u010Di. dres, toust",
           "price": 6.9,
           "description": "(1,7,10)",
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD kurac\u00ED reze\u0148 so zemiakmi a kyslou uhorkou",
           "price": 7.5,
-          "description": "(1,3,7,10)",
+          "description": "300g (1,3,7,10)",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 4,
@@ -906,14 +900,14 @@
         {
           "name": "Chalup\u00E1rske rezan\u010Deky z brav\u010Dovej panenky s fefer\u00F3nmi, zemiakov\u00FDmi plackami, ry\u017Eou a str\u00FAhan\u00FDm syrom, \u0161al\u00E1t",
           "price": 7.9,
-          "description": "(1,3,7)",
+          "description": "2100g (1,3,7)",
           "isVegetarian": false
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD Cheddar syr s hranolkami a dom\u00E1cou tat\u00E1rskou om\u00E1\u010Dkou",
           "price": 7.2,
           "description": "(1,3,7,10)",
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Mie\u0161an\u00FD \u0161al\u00E1t s trhan\u00FDm m\u00E4som, cesnakov\u00FD dressing, toust",
@@ -925,16 +919,16 @@
           "name": "Mie\u0161an\u00FD zeleninov\u00FD \u0161al\u00E1t s Balk\u00E1nskym syrom, med. hor\u010Di. dres, toust",
           "price": 6.9,
           "description": "(1,7,10)",
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD kurac\u00ED reze\u0148 so zemiakmi a kyslou uhorkou",
           "price": 7.5,
-          "description": "(1,3,7,10)",
+          "description": "300g (1,3,7,10)",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 5,
@@ -1014,7 +1008,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 5,
@@ -1094,7 +1088,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 5,
@@ -1174,7 +1168,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 5,
@@ -1254,7 +1248,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 5,
@@ -1334,7 +1328,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 6,
@@ -1366,7 +1360,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 6,
@@ -1398,7 +1392,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 6,
@@ -1430,7 +1424,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 6,
@@ -1462,7 +1456,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 6,
@@ -1494,7 +1488,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 7,
@@ -1550,7 +1544,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 7,
@@ -1606,7 +1600,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 7,
@@ -1662,7 +1656,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 7,
@@ -1718,7 +1712,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 7,
@@ -1774,63 +1768,63 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 8,
       "date": "2026-07-27",
-      "soupOfTheDay": "Tom Yum (330ml) (2,4) - 6,00 \u20AC",
+      "soupOfTheDay": null,
       "items": [
         {
-          "name": "Ry\u017Eov\u00E9 rezance s kurac\u00EDm m\u00E4som",
-          "price": 11.50,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Ry\u017Eov\u00E9 rezance s hov\u00E4dz\u00EDm m\u00E4som",
-          "price": 11.50,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Ry\u017Eov\u00E9 rezance s krevetami",
-          "price": 11.50,
-          "description": null,
-          "isVegetarian": false
-        },
-        {
-          "name": "Kuracie prsia tempura s rezancami a sweet chilli",
+          "name": "Kuracie prsia tempura s rezancami, sweet chilli",
           "price": 12.00,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Bun B\u00F3 Nam Bo",
+          "name": "Padthai s kurac\u00EDm m\u00E4som",
+          "price": 11.00,
+          "description": null,
+          "isVegetarian": false
+        },
+        {
+          "name": "Padthai s hov\u00E4dz\u00EDm m\u00E4som",
+          "price": 11.50,
+          "description": null,
+          "isVegetarian": false
+        },
+        {
+          "name": "Padthai s krevetami",
+          "price": 11.50,
+          "description": null,
+          "isVegetarian": false
+        },
+        {
+          "name": "Kuracie so zeleninou a jasm\u00EDnovou ry\u017Eou",
           "price": 12.00,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Kuracie sot\u00E9 sweet chilli, jasm\u00EDnov\u00E1 ry\u017Ea",
+          "name": "Thajsk\u00E9 kari s kurac\u00EDm m\u00E4som a jasm\u00EDnovou ry\u017Eou",
           "price": 12.00,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Sushi: Alaska roll (8ks), Maki Oshinko (4ks), Maki Tamago (4ks)",
+          "name": "Sushi: Chicken roll (8ks), Maki Tamago (4ks), Maki Sake\u002BAvokado (4ks)",
           "price": 13.50,
           "description": null,
           "isVegetarian": false
         },
         {
-          "name": "Sushi: Vegeta roll (8ks), Maki avok\u00E1do (4ks), Maki Kappa\u002BOshinko (4ks)",
+          "name": "Sushi: Vegeta roll (8ks), Maki avok\u00E1do (4ks), Maki kappa\u002Boshinko (4ks)",
           "price": 12.00,
           "description": null,
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 8,
@@ -1880,7 +1874,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 8,
@@ -1930,7 +1924,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 8,
@@ -1980,7 +1974,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 8,
@@ -2030,7 +2024,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 9,
@@ -2050,7 +2044,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 9,
@@ -2082,7 +2076,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 9,
@@ -2114,7 +2108,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 9,
@@ -2146,7 +2140,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     },
     {
       "restaurantId": 9,
@@ -2154,7 +2148,7 @@
       "soupOfTheDay": "Hr\u00E1\u0161kov\u00E1 kr\u00E9mov\u00E1",
       "items": [
         {
-          "name": "Cviklov\u00FD \u0161al\u00E1t s vaj\u00ED\u010Dkom, nivou a vla\u0161sk\u00FDmi orechami, trhan\u00FD chleb\u00EDk",
+          "name": "Cviklov\u00FD \u0161al\u00E1t s vaj\u00ED\u010Dkom, nivou a vla\u0161sk\u00FDmi orechmi, trhan\u00FD chleb\u00EDk",
           "price": 7.90,
           "description": "Hmotnos\u0165: 350g, Alerg\u00E9ny: 1,3,7",
           "isVegetarian": false
@@ -2172,8 +2166,8 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "12:23"
+      "lastUpdated": "12:31"
     }
   ],
-  "generatedAt": "2026-07-28 12:23:43"
+  "generatedAt": "2026-07-29 12:31:57"
 }
