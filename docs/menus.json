@@ -146,10 +146,10 @@
           "isVegetarian": true
         },
         {
-          "name": "Mix listov\u00FDch \u0161al\u00E1tov s grilovan\u00FDm hermel\u00EDnom, vinaigrette, bagetka",
+          "name": "Mix listov\u00FDch \u0161al\u00E1tov s grilovan\u00FDm hermel\u00EDnom ,vinaigrette ,bagetka",
           "price": 9.10,
           "description": "300g (1,3,7)",
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148, zemiakov\u00FD \u0161al\u00E1t s majon\u00E9zou",
@@ -158,7 +158,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:05"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 1,
@@ -184,7 +184,7 @@
           "isVegetarian": true
         },
         {
-          "name": "Mix listov\u00FDch \u0161al\u00E1tov s grilovan\u00FDm kurac\u00EDm m\u00E4som, sweet chili dressing, bagetka",
+          "name": "Mix listov\u00FDch \u0161al\u00E1tov s grilovan\u00FDm kurac\u00EDm m\u00E4som, sweet chillidresing,bagetka",
           "price": 9.10,
           "description": "300g (1,3,7)",
           "isVegetarian": false
@@ -196,7 +196,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:05"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 1,
@@ -216,16 +216,16 @@
           "isVegetarian": false
         },
         {
-          "name": "Zapekan\u00FD karfiol s bylinkovo-smetanovou om\u00E1\u010Dkou, zemiakov\u00E9 pyr\u00E9 s parmez\u00E1nom",
+          "name": "Zapekan\u00FD karfiol s bylinkovo- smotanovou om\u00E1\u010Dkou ,zemiakov\u00E9 pyre s parmez\u00E1nom",
           "price": 7.80,
           "description": "300g (7)",
           "isVegetarian": true
         },
         {
-          "name": "Mix listov\u00FDch \u0161al\u00E1tov s grilovan\u00FDm hermel\u00EDnom, vinaigrette, bagetka",
+          "name": "Mix listov\u00FDch \u0161al\u00E1tov s grilovan\u00FDm hermel\u00EDnom ,vinaigrette ,bagetka",
           "price": 9.10,
           "description": "300g (1,3,7)",
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148, zemiakov\u00FD \u0161al\u00E1t s majon\u00E9zou",
@@ -234,7 +234,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:05"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 1,
@@ -254,13 +254,13 @@
           "isVegetarian": false
         },
         {
-          "name": "Pe\u010Den\u00FD zemiak s kurac\u00EDmi k\u00FAskami, brokolicou a nivovou om\u00E1\u010Dkou, str\u00FAhan\u00FD syr",
+          "name": "Pe\u010Den\u00FD zemiak s kurac\u00EDmi k\u00FAskami,brokolicou a nivovou om\u00E1\u010Dkou, str\u00FAhan\u00FD syr",
           "price": 7.80,
           "description": "300g (7)",
           "isVegetarian": false
         },
         {
-          "name": "Mix listov\u00FDch \u0161al\u00E1tov s grilovan\u00FDm kurac\u00EDm m\u00E4som, sweet chili dressing, bagetka",
+          "name": "Mix listov\u00FDch \u0161al\u00E1tov s grilovan\u00FDm kurac\u00EDm m\u00E4som, sweet chillidresing,bagetka",
           "price": 9.10,
           "description": "300g (1,3,7)",
           "isVegetarian": false
@@ -272,7 +272,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:05"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 1,
@@ -298,10 +298,10 @@
           "isVegetarian": true
         },
         {
-          "name": "Mix listov\u00FDch \u0161al\u00E1tov s grilovan\u00FDm hermel\u00EDnom, vinaigrette, bagetka",
+          "name": "Mix listov\u00FDch \u0161al\u00E1tov s grilovan\u00FDm hermel\u00EDnom ,vinaigrette ,bagetka",
           "price": 9.10,
           "description": "300g (1,3,7)",
-          "isVegetarian": false
+          "isVegetarian": true
         },
         {
           "name": "Vypr\u00E1\u017Ean\u00FD brav\u010Dov\u00FD reze\u0148, zemiakov\u00FD \u0161al\u00E1t s majon\u00E9zou",
@@ -310,7 +310,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:05"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 2,
@@ -336,7 +336,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:05"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 2,
@@ -362,7 +362,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:05"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 2,
@@ -388,7 +388,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:05"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 2,
@@ -414,7 +414,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:05"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 2,
@@ -440,7 +440,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:05"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 3,
@@ -496,7 +496,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 3,
@@ -552,7 +552,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 3,
@@ -608,7 +608,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 3,
@@ -664,7 +664,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 3,
@@ -720,7 +720,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 4,
@@ -764,7 +764,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 4,
@@ -808,7 +808,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 4,
@@ -852,7 +852,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 4,
@@ -896,7 +896,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 4,
@@ -940,7 +940,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:03"
     },
     {
       "restaurantId": 5,
@@ -1020,7 +1020,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 5,
@@ -1100,7 +1100,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 5,
@@ -1180,7 +1180,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 5,
@@ -1260,7 +1260,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 5,
@@ -1340,7 +1340,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 6,
@@ -1372,7 +1372,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 6,
@@ -1404,7 +1404,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 6,
@@ -1436,7 +1436,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 6,
@@ -1468,7 +1468,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 6,
@@ -1500,7 +1500,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 7,
@@ -1556,7 +1556,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 7,
@@ -1612,7 +1612,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 7,
@@ -1668,7 +1668,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 7,
@@ -1724,7 +1724,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 7,
@@ -1780,7 +1780,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 8,
@@ -1836,7 +1836,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 8,
@@ -1886,7 +1886,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 8,
@@ -1936,7 +1936,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 8,
@@ -1986,7 +1986,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 8,
@@ -2036,7 +2036,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 9,
@@ -2046,17 +2046,17 @@
         {
           "name": "Pe\u010Den\u00E9 tofu s cviklou na hor\u010Dicovej om\u00E1\u010Dke, tarho\u0148a",
           "price": 7.90,
-          "description": "Hmotnos\u0165: 360g, Alerg\u00E9ny: 1,6,10",
+          "description": "360g, Alerg\u00E9ny: 1,6,10",
           "isVegetarian": true
         },
         {
           "name": "Veggie Peanut Curry /indick\u00E9 zeleninovo-ara\u0161idov\u00E9 curry/, ry\u017Ea",
           "price": 7.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 5,10",
+          "description": "400g, Alerg\u00E9ny: 5,10",
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 9,
@@ -2066,29 +2066,29 @@
         {
           "name": "Z\u00E1vin z l\u00EDstkov\u00E9ho cesta s plnkou zo s\u00F3je a su\u0161en\u00FDch paradajok, zemiakov\u00E1 ka\u0161a, \u0161al\u00E1tik",
           "price": 7.90,
-          "description": "Hmotnos\u0165: 360g, Alerg\u00E9ny: 1,6",
+          "description": "360g, Alerg\u00E9ny: 1,6",
           "isVegetarian": true
         },
         {
           "name": "Korma /kokosov\u00E9 mlieko, ke\u0161u, tofu/, basmati ry\u017Ea",
           "price": 7.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 6,8",
+          "description": "400g, Alerg\u00E9ny: 6,8",
           "isVegetarian": true
         },
         {
           "name": "Penne s pestom zo su\u0161en\u00FDch paradajok, syr, rukola",
           "price": 8.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 1,7,8",
+          "description": "400g, Alerg\u00E9ny: 1,7,8",
           "isVegetarian": true
         },
         {
           "name": "BANG BOWL /vypra\u017Ean\u00FD pikantn\u00FD karfiol, jasm\u00EDnov\u00E1 ry\u017Ea, marinovan\u00E9 vaj\u00ED\u010Dko, pra\u017Een\u00E9 ara\u0161idy, \u0161al\u00E1t, nakladan\u00E1 cibu\u013Ea, dressing/",
           "price": 9.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 1,3,5,6,11",
+          "description": "400g, Alerg\u00E9ny: 1,3,5,6,11",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 9,
@@ -2098,29 +2098,29 @@
         {
           "name": "Zapekan\u00E9 cestoviny so smotanou, nivou a brokolicou",
           "price": 7.90,
-          "description": "Hmotnos\u0165: 370g, Alerg\u00E9ny: 1,3,7",
+          "description": "370g, Alerg\u00E9ny: 1,3,7",
           "isVegetarian": true
         },
         {
           "name": "Zeleninovo-quinoov\u00E9 kofty, jablkov\u00E9 \u010Datn\u00ED, kokosov\u00E1 ry\u017Ea",
           "price": 7.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 9,10",
+          "description": "400g, Alerg\u00E9ny: 9,10",
           "isVegetarian": true
         },
         {
           "name": "Penne s pestom zo su\u0161en\u00FDch paradajok, syr, rukola",
           "price": 8.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 1,7,8",
+          "description": "400g, Alerg\u00E9ny: 1,7,8",
           "isVegetarian": true
         },
         {
           "name": "BANG BOWL /vypra\u017Ean\u00FD pikantn\u00FD karfiol, jasm\u00EDnov\u00E1 ry\u017Ea, marinovan\u00E9 vaj\u00ED\u010Dko, pra\u017Een\u00E9 ara\u0161idy, \u0161al\u00E1t, nakladan\u00E1 cibu\u013Ea, dressing/",
           "price": 9.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 1,3,5,6,11",
+          "description": "400g, Alerg\u00E9ny: 1,3,5,6,11",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 9,
@@ -2130,29 +2130,29 @@
         {
           "name": "Tortita Mexicana (zemiakov\u00E1 placka plnen\u00E1 mexickou zmesou a syrom)",
           "price": 7.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 1,3,7",
+          "description": "400g, Alerg\u00E9ny: 1,3,7",
           "isVegetarian": true
         },
         {
           "name": "Dusen\u00E1 zelenina na indick\u00FD sp\u00F4sob, basmati ry\u017Ea",
           "price": 7.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 10",
+          "description": "400g, Alerg\u00E9ny: 10",
           "isVegetarian": true
         },
         {
           "name": "Penne s pestom zo su\u0161en\u00FDch paradajok, syr, rukola",
           "price": 8.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 1,7,8",
+          "description": "400g, Alerg\u00E9ny: 1,7,8",
           "isVegetarian": true
         },
         {
           "name": "BANG BOWL /vypra\u017Ean\u00FD pikantn\u00FD karfiol, jasm\u00EDnov\u00E1 ry\u017Ea, marinovan\u00E9 vaj\u00ED\u010Dko, pra\u017Een\u00E9 ara\u0161idy, \u0161al\u00E1t, nakladan\u00E1 cibu\u013Ea, dressing/",
           "price": 9.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 1,3,5,6,11",
+          "description": "400g, Alerg\u00E9ny: 1,3,5,6,11",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     },
     {
       "restaurantId": 9,
@@ -2162,30 +2162,30 @@
         {
           "name": "\u0160paldov\u00E9 paren\u00E9 buchty plnen\u00E9 \u010Dokol\u00E1dou s kakaom a maslom",
           "price": 7.90,
-          "description": "Hmotnos\u0165: 350g, Alerg\u00E9ny: 1,7",
+          "description": "350g, Alerg\u00E9ny: 1,7",
           "isVegetarian": true
         },
         {
           "name": "Kar\u00ED s tofu a zeleninou /mrkva, limeta, c\u00EDcer, koriander/ na kokosovom mlieku, jasminova ry\u017Ea",
           "price": 7.90,
-          "description": "Hmotnos\u0165: 380g, Alerg\u00E9ny: 10",
+          "description": "380g, Alerg\u00E9ny: 10",
           "isVegetarian": true
         },
         {
           "name": "Penne s pestom zo su\u0161en\u00FDch paradajok, syr, rukola",
           "price": 8.90,
-          "description": "Hmotnos\u0165: 400g, Alerg\u00E9ny: 1,7,8",
+          "description": "400g, Alerg\u00E9ny: 1,7,8",
           "isVegetarian": true
         },
         {
           "name": "BANG BOWL /vypra\u017Ean\u00FD pikantn\u00FD karfiol, jasm\u00EDnov\u00E1 ry\u017Ea, marinovan\u00E9 vaj\u00ED\u010Dko, pra\u017Een\u00E9 ara\u0161idy, \u0161al\u00E1t, nakladan\u00E1 cibu\u013Ea, dressing/",
           "price": 9.90,
-          "description": "Hmotnos\u0165: 450g, Alerg\u00E9ny: 1,3,5,6,11",
+          "description": "450g, Alerg\u00E9ny: 1,3,5,6,11",
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:06"
+      "lastUpdated": "11:04"
     }
   ],
-  "generatedAt": "2026-08-24 09:06:32"
+  "generatedAt": "2026-08-24 11:04:12"
 }
