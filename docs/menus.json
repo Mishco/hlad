@@ -125,7 +125,7 @@
     {
       "restaurantId": 1,
       "date": "2026-09-21",
-      "soupOfTheDay": null,
+      "soupOfTheDay": "Tekvicov\u00E1 mlie\u010Dna polievka",
       "items": [
         {
           "name": "Z\u00E1vitok z brav\u010Dov\u00E9ho kar\u00E9, pe\u010Den\u00E9 zemiaky, demi-glace, cesnakov\u00FD dip",
@@ -158,12 +158,12 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 1,
       "date": "2026-09-22",
-      "soupOfTheDay": null,
+      "soupOfTheDay": "Minestrone s parmez\u00E1nom",
       "items": [
         {
           "name": "Stroganov z brav\u010Dovj panenky ,1/2 ry\u017Ea, 1/2 hranolky",
@@ -196,12 +196,12 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 1,
       "date": "2026-09-23",
-      "soupOfTheDay": null,
+      "soupOfTheDay": "Bor\u0161\u010D s kyslou smotanou",
       "items": [
         {
           "name": "Brav\u010Dov\u00E1 \u017Eivnask\u00E1 z plechu so zemiakmi, kysla uhorka",
@@ -234,12 +234,12 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 1,
       "date": "2026-09-24",
-      "soupOfTheDay": null,
+      "soupOfTheDay": "\u0160o\u0161ovicov\u00E1 polievka na kyslo so zemiakmi",
       "items": [
         {
           "name": "Hov\u00E4dzie dusen\u00E9 s chrenovou om\u00E1\u010Dkou, dom\u00E1ca kysnut\u00E1 kned\u013Ea",
@@ -272,12 +272,12 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 1,
       "date": "2026-09-25",
-      "soupOfTheDay": null,
+      "soupOfTheDay": "Frankfurtsk\u00E1 polievka s p\u00E1rkom",
       "items": [
         {
           "name": "Va\u017Eeck\u00E1 poch\u00FA\u0165ka v zemiakovej placke, str\u00FAhan\u00FD syr, tatransk\u00FD \u0161al\u00E1t",
@@ -310,7 +310,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 2,
@@ -336,7 +336,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 2,
@@ -362,7 +362,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 2,
@@ -388,7 +388,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 2,
@@ -414,7 +414,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 2,
@@ -440,7 +440,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 3,
@@ -496,7 +496,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 3,
@@ -552,7 +552,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 3,
@@ -608,7 +608,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 3,
@@ -664,7 +664,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 3,
@@ -720,7 +720,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 4,
@@ -764,7 +764,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 4,
@@ -802,7 +802,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 4,
@@ -840,7 +840,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 4,
@@ -878,7 +878,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 4,
@@ -916,7 +916,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 5,
@@ -996,7 +996,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 5,
@@ -1076,7 +1076,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 5,
@@ -1156,7 +1156,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 5,
@@ -1236,7 +1236,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 5,
@@ -1316,7 +1316,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 6,
@@ -1348,7 +1348,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 6,
@@ -1380,7 +1380,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 6,
@@ -1412,7 +1412,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 6,
@@ -1444,7 +1444,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 6,
@@ -1476,7 +1476,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 7,
@@ -1532,7 +1532,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 7,
@@ -1588,7 +1588,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 7,
@@ -1644,7 +1644,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 7,
@@ -1700,7 +1700,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 7,
@@ -1756,7 +1756,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 8,
@@ -1812,7 +1812,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 8,
@@ -1862,7 +1862,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 8,
@@ -1912,7 +1912,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 8,
@@ -1962,7 +1962,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 8,
@@ -2012,7 +2012,7 @@
           "isVegetarian": true
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 9,
@@ -2032,7 +2032,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 9,
@@ -2064,7 +2064,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 9,
@@ -2096,7 +2096,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 9,
@@ -2128,7 +2128,7 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     },
     {
       "restaurantId": 9,
@@ -2160,8 +2160,8 @@
           "isVegetarian": false
         }
       ],
-      "lastUpdated": "09:51"
+      "lastUpdated": "10:19"
     }
   ],
-  "generatedAt": "2026-09-21 09:51:44"
+  "generatedAt": "2026-09-21 10:19:39"
 }
