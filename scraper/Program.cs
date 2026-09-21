@@ -389,7 +389,9 @@ PAGE TEXT:
                 var nameRaw = nameNode != null ? HtmlEntity.DeEntitize(nameNode.InnerText).Trim() : "";
                 nameRaw = Regex.Replace(nameRaw, @"\s+", " ").Trim();
 
-                if (portion.Contains("0,33 l") && soup == null)
+                // Plzeňka serves the soup as the only unpriced entry before "Jedlá".
+                // Its current markup no longer includes a portion such as "0,33 l".
+                if (priceNode == null && soup == null && !string.IsNullOrWhiteSpace(nameRaw))
                 {
                     var soupName = Regex.Replace(nameRaw, @"\(\s*[\d\s,]+\s*\)", "").Trim();
                     soup = soupName;

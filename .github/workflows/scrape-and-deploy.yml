@@ -2,8 +2,9 @@ name: Scrape menus
 
 on:
   schedule:
-    # Run at 10:30 UTC Monday-Friday
-    - cron: '30 10 * * 1-5'
+    # Run at 09:30 in Slovakia during daylight saving time (07:30 UTC).
+    # GitHub Actions schedules use UTC and can start a few minutes late.
+    - cron: '30 7 * * 1-5'
   workflow_dispatch: # Allow manual trigger
 
 permissions:
