@@ -119,7 +119,7 @@ const monthNames = ['januára', 'februára', 'marca', 'apríla', 'mája', 'júna
 // Load menu data
 async function init() {
     try {
-        const resp = await fetch('menus.json');
+        const resp = await fetch('menus.json', { cache: 'no-store' });
         menuData = await resp.json();
         document.getElementById('generated-at').textContent = 'Posledna aktualizacia: ' + menuData.generatedAt;
         renderMenus();
