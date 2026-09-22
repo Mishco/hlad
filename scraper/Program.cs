@@ -48,7 +48,15 @@ class Program
 
             try
             {
-                if (useAI)
+                // Forum Poprad has a reliable, dated weekly HTML menu. Prefer its deterministic
+                // parser so AI cannot select a menu for a different date.
+                if (r.WebsiteUrl.Contains("forumpoprad.sk"))
+                {
+                    var forumMenu = await ScrapeForumPoprad(r.Id, r.WebsiteUrl);
+                    if (forumMenu != null)
+                        menus = new List<DailyMenu> { forumMenu };
+                }
+                else if (useAI)
                 {
                     menus = await ScrapeWithAI(r);
                 }
@@ -555,11 +563,12 @@ PAGE TEXT:
             var node = allNodes[i];
             var text = HtmlEntity.DeEntitize(node.InnerText).Trim();
 
-            if (text.Contains(todayName) && node.InnerHtml.Contains("<strong>"))
+            if (node.InnerHtml.Contains("<strong>")
+                && Regex.IsMatch(text, $@"^\s*{todayName}\s+{today:dd\.MM\.yyyy}\s*$"))
             { inTodaySection = true; continue; }
 
             if (inTodaySection && node.InnerHtml != null && node.InnerHtml.Contains("<strong>")
-                && dayNames.Values.Any(d => text.Contains(d)) && !text.Contains(todayName))
+                && dayNames.Values.Any(d => Regex.IsMatch(text, $@"^\s*{d}\s+\d{{2}}\.\d{{2}}\.\d{{4}}\s*$")))
                 break;
 
             if (!inTodaySection) continue;

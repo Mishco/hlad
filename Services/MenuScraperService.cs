@@ -148,7 +148,7 @@ public class MenuScraperService
                 Date = DateOnly.FromDateTime(today)
             };
 
-            // Find the <strong> or <p><strong> with today's day
+            // Match both weekday and date so a stale section for the same weekday is never used.
             var allNodes = contentNode.ChildNodes.ToList();
             bool inTodaySection = false;
             bool foundSoup = false;
@@ -158,7 +158,8 @@ public class MenuScraperService
                 var node = allNodes[i];
                 var text = HtmlEntity.DeEntitize(node.InnerText).Trim();
 
-                if (text.Contains(todayName) && node.InnerHtml.Contains("<strong>"))
+                if (node.InnerHtml.Contains("<strong>")
+                    && Regex.IsMatch(text, $@"^\s*{todayName}\s+{today:dd\.MM\.yyyy}\s*$"))
                 {
                     inTodaySection = true;
                     continue;
@@ -166,7 +167,7 @@ public class MenuScraperService
 
                 // If we hit the next day, stop
                 if (inTodaySection && node.InnerHtml != null && node.InnerHtml.Contains("<strong>")
-                    && dayNames.Values.Any(d => text.Contains(d)) && !text.Contains(todayName))
+                    && dayNames.Values.Any(d => Regex.IsMatch(text, $@"^\s*{d}\s+\d{{2}}\.\d{{2}}\.\d{{4}}\s*$")))
                 {
                     break;
                 }
